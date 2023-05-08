@@ -1,0 +1,20 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "A simple to do list web based application to practice the single responsibility principle.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.1.0"
+  }
+}
