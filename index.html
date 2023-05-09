@@ -4,10 +4,76 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>To Do List</title>
   </head>
   <body>
-    <div class="content"></div>
+    <div class="content">
+      <header class="header">
+        <h1>To Do List</h1>
+      </header>
+      <nav class="nav">
+        <ul>
+          <li class="home">Home</li>
+          <li class="today">Today</li>
+          <li class="week">Week</li>
+          <li class="projects">Projects</li>
+        </ul>
+
+        <form action="">
+          <fieldset>
+            <legend>Enter your task</legend>
+
+            <button class="close">X</button>
+
+            <label for="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Your Title"
+              required
+            />
+
+            <label for="description">Description</label>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              placeholder="(E.g: do laundry)"
+              required
+            />
+
+            <label for="date">Due Date:</label>
+            <input type="date" name="date" id="date" required />
+
+            <label for="priority">Priority</label>
+            <input type="button" value="low" />
+            <input type="button" value="medium" />
+            <input type="button" value="high" />
+            <!-- <select name="priority" id="priority" required>
+              <option value="low" selected>low</option>
+              <option value="medium">medium</option>
+              <option value="high">high</option>
+            </select> -->
+
+            <label for="project">Project</label>
+            <select name="project" id="project">
+              <option value="home" selected>Home</option>
+            </select>
+
+            <input type="button" value="close" />
+            <input type="submit" />
+          </fieldset>
+        </form>
+      </nav>
+      <div class="mainContent">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
+        cupiditate iure dolor incidunt esse ipsum ducimus quam sint. Obcaecati
+        illum voluptates nesciunt aspernatur. Possimus, nesciunt! Impedit quis
+        molestias provident voluptate.
+      </div>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
