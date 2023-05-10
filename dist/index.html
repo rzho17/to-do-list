@@ -45,17 +45,20 @@
             />
 
             <label for="date">Due Date:</label>
-            <input type="date" name="date" id="date" required />
+            <input
+              type="date"
+              name="date"
+              id="date"
+              value="1999-12-31"
+              required
+            />
 
             <label for="priority">Priority</label>
-            <input type="button" value="low" />
-            <input type="button" value="medium" />
-            <input type="button" value="high" />
-            <!-- <select name="priority" id="priority" required>
+            <select name="priority" id="priority" required>
               <option value="low" selected>low</option>
               <option value="medium">medium</option>
               <option value="high">high</option>
-            </select> -->
+            </select>
 
             <label for="project">Project</label>
             <select name="project" id="project">
@@ -63,7 +66,7 @@
             </select>
 
             <input type="button" value="close" />
-            <input type="submit" />
+            <input type="submit" data-submit="submit" />
           </fieldset>
         </form>
       </nav>
