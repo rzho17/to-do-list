@@ -1,4 +1,5 @@
-import test from "./dom-manipulation";
+import displayTasks from "./dom-manipulation";
+import { createP, clearContent } from "./dom-manipulation";
 
 class ToDo {
   constructor(title, description, dueDate, priority) {
@@ -12,6 +13,36 @@ class ToDo {
     console.log("hi");
   }
 }
+
+const testRun = (arr) => {
+  //   console.log("test");
+
+  arr.forEach((e) => {
+    // console.log(
+
+    const keys = Object.keys(e);
+    const values = Object.values(e);
+
+    for (let i = 0; i < values.length; i++) {
+      //   displayTasks(values[i]);
+      displayTasks(createP(values[i]));
+      //   console.log(values[i]);
+    }
+    // Object.keys(e).forEach((item) => {
+    //   displayTasks(item);
+    //   console.log(item);
+    // });
+    // Object.values(e).forEach((item) => {
+    //   displayTasks(item);
+    //   console.log(item);
+    // });
+
+    //need a loop to go through array
+    //need another loop to loop through each index of the array
+    //take the key of the objects and store them or have hard written values for it
+    // take the values and store them and display them on the mainContent
+  });
+};
 
 const makeToDo = (() => {
   const form = document.querySelector("form");
@@ -31,27 +62,20 @@ const makeToDo = (() => {
     // console.log(newToDo);
     arr.push(newToDo);
 
-    test(arr[0].title + arr[0].description + arr[0].dueDate + arr[0].priority);
+    clearContent();
+    testRun(arr);
+
+    // displayTasks(
+    //   arr[0].title + arr[0].description + arr[0].dueDate + arr[0].priority
+    // );
   });
   return { arr };
 })();
 
-const sub = document.querySelector("[data-submit]");
-sub.addEventListener("click", () => {
-  console.log(makeToDo.arr);
-});
+// const blah = document.querySelector("[data-submit]");
 
-// console.log(makeToDo.arr);
-
-// const pushArr = () => {
-//   const arr = [];
-//   arr.push(makeToDo.newToDo);
-// };
+// blah.addEventListener("click", () => {
+//   console.log(makeToDo.arr);
+// });
 
 export default makeToDo;
-
-// const chore = new ToDo("chore", "clean things", "1998", "high");
-
-// export default chore;
-
-// export default console.log(Object.values(chore));

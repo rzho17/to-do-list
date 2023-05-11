@@ -1,11 +1,23 @@
 import chore from "./create-to-do";
-import { makeToDo } from "./create-to-do";
+// import { makeToDo } from "./create-to-do";
+import makeToDo from "./create-to-do";
 
-const test = (arr) => {
+const displayTasks = (arr) => {
   const mainContent = document.querySelector(".mainContent");
-  mainContent.innerHTML = "";
-  mainContent.textContent = arr;
-  //   console.log(Object.values(chore));
+
+  mainContent.append(arr);
 };
 
-export default test;
+export const createP = (text) => {
+  const p = document.createElement("p");
+  p.textContent = text;
+
+  return p;
+};
+
+export const clearContent = () => {
+  const mainContent = document.querySelector(".mainContent");
+  mainContent.innerHTML = "";
+};
+
+export default displayTasks;
