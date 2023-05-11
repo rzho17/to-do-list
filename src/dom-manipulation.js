@@ -8,9 +8,10 @@ const displayTasks = (arr) => {
   mainContent.append(arr);
 };
 
-export const createP = (text) => {
+export const createP = (text, value) => {
   const p = document.createElement("p");
   p.textContent = text;
+  p.dataset.number = value;
 
   return p;
 };

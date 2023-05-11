@@ -15,27 +15,18 @@ class ToDo {
 }
 
 const testRun = (arr) => {
-  //   console.log("test");
-
+  let n = 0;
   arr.forEach((e) => {
-    // console.log(
-
     const keys = Object.keys(e);
     const values = Object.values(e);
 
     for (let i = 0; i < values.length; i++) {
-      //   displayTasks(values[i]);
-      displayTasks(createP(values[i]));
-      //   console.log(values[i]);
+      displayTasks(createP(keys[i], n));
+      displayTasks(createP(values[i], n));
+      console.log(n);
     }
-    // Object.keys(e).forEach((item) => {
-    //   displayTasks(item);
-    //   console.log(item);
-    // });
-    // Object.values(e).forEach((item) => {
-    //   displayTasks(item);
-    //   console.log(item);
-    // });
+
+    n++;
 
     //need a loop to go through array
     //need another loop to loop through each index of the array
@@ -59,23 +50,13 @@ const makeToDo = (() => {
     const priority = formData.get("priority");
 
     const newToDo = new ToDo(title, description, dueDate, priority);
-    // console.log(newToDo);
     arr.push(newToDo);
 
     clearContent();
+    console.clear();
     testRun(arr);
-
-    // displayTasks(
-    //   arr[0].title + arr[0].description + arr[0].dueDate + arr[0].priority
-    // );
   });
   return { arr };
 })();
-
-// const blah = document.querySelector("[data-submit]");
-
-// blah.addEventListener("click", () => {
-//   console.log(makeToDo.arr);
-// });
 
 export default makeToDo;
