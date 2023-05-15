@@ -37,3 +37,11 @@ body {
   background-color: grey;
   min-width: 100%;
 }
+
+.taskContainer {
+  display: flex;
+  justify-content: space-evenly;
+
+  border: 1px solid;
+  width: 100%;
+}
