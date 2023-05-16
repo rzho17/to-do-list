@@ -1,44 +1,19 @@
-import displayTasks from "./dom-manipulation";
+import displayTasks, { removeStrike, strikeThrough } from "./dom-manipulation";
 import { createP, clearContent, makeTaskContainer } from "./dom-manipulation";
 
 class ToDo {
-  constructor(title, description, dueDate, priority) {
+  constructor(title, description, dueDate, priority, complete) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
+    this.complete = complete;
   }
 
   test() {
     console.log("hi");
   }
 }
-
-export const displayAllTasks = (arr) => {
-  let n = 0;
-  arr.forEach((e) => {
-    const keys = Object.keys(e);
-    const values = Object.values(e);
-
-    // for (let i = 0; i < values.length; i++) {
-    //   //   displayTasks(createP(keys[i], n));
-    //   //   displayTasks(createP(values[i], n));
-    //   //   makeTaskContainer(values[0], values[1], values[2]);
-    //   //   console.log(values[0], values[1], values[2]);
-    //   //   console.log(n);
-    // }
-    displayTasks(makeTaskContainer(values[0], values[1], values[2], n));
-
-    n++;
-
-    //need a loop to go through array
-    //need another loop to loop through each index of the array
-    //take the key of the objects and store them or have hard written values for it
-    // take the values and store them and display them on the mainContent
-  });
-  removeItem(arr);
-  editToDo(arr);
-};
 
 const removeItem = (arr) => {
   const removeTask = document.querySelectorAll(".remove");
@@ -61,10 +36,6 @@ const editToDo = (arr) => {
 
   editButton.forEach((edit) => {
     edit.addEventListener("click", (e) => {
-      //give the edit a data number
-      //edit that specic number by using it as the index of the arr
-      // edit the info in that array index by usinga pop up
-
       let num = e.target.dataset.number;
 
       editForm.addEventListener("submit", (e) => {
@@ -96,6 +67,51 @@ const editToDo = (arr) => {
   });
 };
 
+const checkCompletion = (arr) => {
+  const check = document.querySelectorAll(".complete");
+
+  check.forEach((box) => {
+    box.addEventListener("click", (e) => {
+      //   if (arr[e.target.dataset.number].complete === false) {
+      //     console.log(false);
+      //     arr[e.target.dataset.number].complete = true;
+      //   }
+
+      console.log("hi");
+
+      if (arr[e.target.dataset.number].complete === false) {
+        arr[e.target.dataset.number].complete = true;
+        strikeThrough();
+        console.log(true);
+      } else {
+        arr[e.target.dataset.number].complete = false;
+        removeStrike();
+        console.log(false);
+      }
+    });
+  });
+};
+
+export const displayAllTasks = (arr) => {
+  let n = 0;
+  arr.forEach((e) => {
+    // const keys = Object.keys(e);
+    const values = Object.values(e);
+
+    displayTasks(makeTaskContainer(values[0], values[1], values[2], n));
+
+    n++;
+
+    //need a loop to go through array
+    //need another loop to loop through each index of the array
+    //take the key of the objects and store them or have hard written values for it
+    // take the values and store them and display them on the mainContent
+  });
+  removeItem(arr);
+  editToDo(arr);
+  checkCompletion(arr);
+};
+
 const makeToDo = (() => {
   const form = document.querySelector("form");
   const arr = [];
@@ -109,8 +125,9 @@ const makeToDo = (() => {
     const description = formData.get("description");
     const dueDate = formData.get("date");
     const priority = formData.get("priority");
+    const complete = false;
 
-    const newToDo = new ToDo(title, description, dueDate, priority);
+    const newToDo = new ToDo(title, description, dueDate, priority, complete);
     arr.push(newToDo);
 
     clearContent();

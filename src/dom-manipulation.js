@@ -22,6 +22,45 @@ export const clearContent = () => {
   mainContent.innerHTML = "";
 };
 
+export const strikeThrough = () => {
+  //   const check = document.querySelectorAll(".complete");
+  const strikeTitle = document.querySelector(".title");
+  const strikeDetail = document.querySelector(".details");
+  const strikeDate = document.querySelector(".date");
+
+  strikeTitle.style.textDecoration = "line-through";
+  strikeDetail.style.textDecoration = "line-through";
+  strikeDate.style.textDecoration = "line-through";
+};
+
+export const removeStrike = () => {
+  //   const check = document.querySelectorAll(".complete");
+  const strikeTitle = document.querySelector(".title");
+  const strikeDetail = document.querySelector(".details");
+  const strikeDate = document.querySelector(".date");
+
+  strikeTitle.style.textDecoration = "none";
+  strikeDetail.style.textDecoration = "none";
+  strikeDate.style.textDecoration = "none";
+};
+
+// export const checkCompletion = (arr) => {
+//   const check = document.querySelectorAll(".complete");
+//   const strikeTitle = document.querySelector(".title");
+//   const strikeDetail = document.querySelector(".details");
+//   const strikeDate = document.querySelector(".date");
+
+//   check.forEach((box) => {
+//     box.addEventListener("click", (e) => {
+//       if (arr[e.target.dataset.value].complete === false) {
+//         strikeTitle.style.textDecoration = "line-through";
+//         strikeDetail.style.textDecoration = "line-through";
+//         strikeDate.style.textDecoration = "line-through";
+//       }
+//     });
+//   });
+// };
+
 export const makeTaskContainer = (title, detail, day, n) => {
   const taskContainer = document.createElement("div");
   taskContainer.setAttribute("class", "taskContainer");
@@ -29,15 +68,20 @@ export const makeTaskContainer = (title, detail, day, n) => {
 
   const checkBox = document.createElement("input");
   checkBox.setAttribute("type", "checkbox");
+  checkBox.className = "complete";
+  checkBox.dataset.number = n;
 
   const taskTitle = document.createElement("div");
   taskTitle.textContent = title;
+  taskTitle.className = "title";
 
   const details = document.createElement("div");
   details.textContent = detail;
+  details.className = "details";
 
   const date = document.createElement("div");
   date.textContent = day;
+  date.className = "date";
 
   const edit = document.createElement("button");
   edit.className = "editBtn";
