@@ -40,7 +40,9 @@ export const makeTaskContainer = (title, detail, day, n) => {
   date.textContent = day;
 
   const edit = document.createElement("button");
+  edit.className = "editBtn";
   edit.textContent = "edit";
+  edit.dataset.number = n;
 
   const remove = document.createElement("button");
   remove.className = "remove";
@@ -50,24 +52,6 @@ export const makeTaskContainer = (title, detail, day, n) => {
   taskContainer.append(checkBox, taskTitle, details, date, edit, remove);
 
   return taskContainer;
-};
-
-export const removeItem = (arr) => {
-  const removeTask = document.querySelectorAll(".remove");
-  console.log(arr);
-
-  removeTask.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      //   console.log("hi");
-      //   console.log(e.target.dataset.number);
-
-      arr.splice(e.target.dataset.number, 1);
-
-      clearContent();
-      displayAllTasks(arr);
-      console.log(arr);
-    });
-  });
 };
 
 export default displayTasks;
