@@ -69,6 +69,56 @@
             <input type="submit" data-submit="submit" />
           </fieldset>
         </form>
+
+        <form action="" id="edit">
+          <fieldset>
+            <legend>Edit your task</legend>
+
+            <button class="close">X</button>
+
+            <label for="editTitle">Title</label>
+            <input
+              type="text"
+              id="editTitle"
+              name="editTitle"
+              placeholder="Your Title"
+              required
+            />
+
+            <label for="editDescription">Description</label>
+            <input
+              type="text"
+              id="editDescription"
+              name="editDescription"
+              placeholder="(E.g: do laundry)"
+              required
+            />
+
+            <label for="editDate">Due Date:</label>
+            <input
+              type="date"
+              name="editDate"
+              id="editDate"
+              value="1999-12-31"
+              required
+            />
+
+            <label for="editPriority">Priority</label>
+            <select name="editPriority" id="editPriority" required>
+              <option value="low" selected>low</option>
+              <option value="medium">medium</option>
+              <option value="high">high</option>
+            </select>
+
+            <label for="editProject">Project</label>
+            <select name="editProject" id="editProject">
+              <option value="home" selected>Home</option>
+            </select>
+
+            <input type="button" value="close" />
+            <input type="submit" data-submit="submit" />
+          </fieldset>
+        </form>
       </nav>
       <div class="mainContent">
         <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
