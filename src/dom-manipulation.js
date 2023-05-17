@@ -22,26 +22,38 @@ export const clearContent = () => {
   mainContent.innerHTML = "";
 };
 
-export const strikeThrough = () => {
+export const strikeThrough = (e) => {
   //   const check = document.querySelectorAll(".complete");
-  const strikeTitle = document.querySelector(".title");
-  const strikeDetail = document.querySelector(".details");
-  const strikeDate = document.querySelector(".date");
+  const parentDiv = e.target.parentElement;
+  const strikeTitle = parentDiv.querySelector(".title");
+  const strikeDetail = parentDiv.querySelector(".details");
+  const strikeDate = parentDiv.querySelector(".date");
 
-  strikeTitle.style.textDecoration = "line-through";
-  strikeDetail.style.textDecoration = "line-through";
-  strikeDate.style.textDecoration = "line-through";
+  //   e.target.dataset.number.style.textDecoration = "line-through";
+
+  //   strikeTitle.style.textDecoration = "line-through";
+  //   strikeDetail.style.textDecoration = "line-through";
+  //   strikeDate.style.textDecoration = "line-through";
+
+  strikeTitle.classList.toggle("toDoChecked");
+  strikeDetail.classList.toggle("toDoChecked");
+  strikeDate.classList.toggle("toDoChecked");
 };
 
-export const removeStrike = () => {
-  //   const check = document.querySelectorAll(".complete");
-  const strikeTitle = document.querySelector(".title");
-  const strikeDetail = document.querySelector(".details");
-  const strikeDate = document.querySelector(".date");
+export const removeStrike = (e) => {
+  const parentDiv = e.target.parentElement;
+  //   const check = parentDiv.querySelectorAll(".complete");
+  const strikeTitle = parentDiv.querySelector(".title");
+  const strikeDetail = parentDiv.querySelector(".details");
+  const strikeDate = parentDiv.querySelector(".date");
 
-  strikeTitle.style.textDecoration = "none";
-  strikeDetail.style.textDecoration = "none";
-  strikeDate.style.textDecoration = "none";
+  //   strikeTitle.style.textDecoration = "none";
+  //   strikeDetail.style.textDecoration = "none";
+  //   strikeDate.style.textDecoration = "none";
+
+  strikeTitle.classList.remove("toDoChecked");
+  strikeDetail.classList.remove("toDoChecked");
+  strikeDate.classList.remove("toDoChecked");
 };
 
 // export const checkCompletion = (arr) => {

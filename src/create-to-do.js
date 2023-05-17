@@ -67,7 +67,7 @@ const editToDo = (arr) => {
   });
 };
 
-const checkCompletion = (arr) => {
+const setCompletion = (arr) => {
   const check = document.querySelectorAll(".complete");
 
   check.forEach((box) => {
@@ -77,15 +77,18 @@ const checkCompletion = (arr) => {
       //     arr[e.target.dataset.number].complete = true;
       //   }
 
-      console.log("hi");
+      //   console.log(arr);
 
-      if (arr[e.target.dataset.number].complete === false) {
-        arr[e.target.dataset.number].complete = true;
-        strikeThrough();
+      const dataIndex = e.target.dataset.number;
+      console.log(dataIndex);
+
+      if (arr[dataIndex].complete === false) {
+        arr[dataIndex].complete = true;
+        strikeThrough(e);
         console.log(true);
       } else {
-        arr[e.target.dataset.number].complete = false;
-        removeStrike();
+        arr[dataIndex].complete = false;
+        removeStrike(e);
         console.log(false);
       }
     });
@@ -109,7 +112,7 @@ export const displayAllTasks = (arr) => {
   });
   removeItem(arr);
   editToDo(arr);
-  checkCompletion(arr);
+  setCompletion(arr);
 };
 
 const makeToDo = (() => {
