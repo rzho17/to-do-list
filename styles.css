@@ -45,3 +45,7 @@ body {
   border: 1px solid;
   width: 100%;
 }
+
+.toDoChecked {
+  text-decoration: line-through;
+}
