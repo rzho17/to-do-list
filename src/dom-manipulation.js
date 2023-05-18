@@ -23,55 +23,38 @@ export const clearContent = () => {
 };
 
 export const strikeThrough = (e) => {
-  //   const check = document.querySelectorAll(".complete");
   const parentDiv = e.target.parentElement;
   const strikeTitle = parentDiv.querySelector(".title");
   const strikeDetail = parentDiv.querySelector(".details");
   const strikeDate = parentDiv.querySelector(".date");
-
-  //   e.target.dataset.number.style.textDecoration = "line-through";
-
-  //   strikeTitle.style.textDecoration = "line-through";
-  //   strikeDetail.style.textDecoration = "line-through";
-  //   strikeDate.style.textDecoration = "line-through";
 
   strikeTitle.classList.toggle("toDoChecked");
   strikeDetail.classList.toggle("toDoChecked");
   strikeDate.classList.toggle("toDoChecked");
 };
 
-export const removeStrike = (e) => {
-  const parentDiv = e.target.parentElement;
-  //   const check = parentDiv.querySelectorAll(".complete");
+export const testStrike = (dataValue) => {
+  const parentDiv = document.querySelector(
+    '.taskContainer[data-number="' + dataValue + '"]'
+  );
   const strikeTitle = parentDiv.querySelector(".title");
   const strikeDetail = parentDiv.querySelector(".details");
   const strikeDate = parentDiv.querySelector(".date");
 
-  //   strikeTitle.style.textDecoration = "none";
-  //   strikeDetail.style.textDecoration = "none";
-  //   strikeDate.style.textDecoration = "none";
+  strikeTitle.classList.toggle("toDoChecked");
+  strikeDetail.classList.toggle("toDoChecked");
+  strikeDate.classList.toggle("toDoChecked");
+};
+export const removeStrike = (e) => {
+  const parentDiv = e.target.parentElement;
+  const strikeTitle = parentDiv.querySelector(".title");
+  const strikeDetail = parentDiv.querySelector(".details");
+  const strikeDate = parentDiv.querySelector(".date");
 
   strikeTitle.classList.remove("toDoChecked");
   strikeDetail.classList.remove("toDoChecked");
   strikeDate.classList.remove("toDoChecked");
 };
-
-// export const checkCompletion = (arr) => {
-//   const check = document.querySelectorAll(".complete");
-//   const strikeTitle = document.querySelector(".title");
-//   const strikeDetail = document.querySelector(".details");
-//   const strikeDate = document.querySelector(".date");
-
-//   check.forEach((box) => {
-//     box.addEventListener("click", (e) => {
-//       if (arr[e.target.dataset.value].complete === false) {
-//         strikeTitle.style.textDecoration = "line-through";
-//         strikeDetail.style.textDecoration = "line-through";
-//         strikeDate.style.textDecoration = "line-through";
-//       }
-//     });
-//   });
-// };
 
 export const makeTaskContainer = (title, detail, day, n) => {
   const taskContainer = document.createElement("div");

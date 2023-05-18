@@ -1,4 +1,8 @@
-import displayTasks, { removeStrike, strikeThrough } from "./dom-manipulation";
+import displayTasks, {
+  removeStrike,
+  strikeThrough,
+  testStrike,
+} from "./dom-manipulation";
 import { createP, clearContent, makeTaskContainer } from "./dom-manipulation";
 
 class ToDo {
@@ -72,26 +76,35 @@ const setCompletion = (arr) => {
 
   check.forEach((box) => {
     box.addEventListener("click", (e) => {
-      //   if (arr[e.target.dataset.number].complete === false) {
-      //     console.log(false);
-      //     arr[e.target.dataset.number].complete = true;
-      //   }
-
-      //   console.log(arr);
-
       const dataIndex = e.target.dataset.number;
-      console.log(dataIndex);
 
       if (arr[dataIndex].complete === false) {
         arr[dataIndex].complete = true;
         strikeThrough(e);
-        console.log(true);
+        console.log(arr[dataIndex].complete);
       } else {
         arr[dataIndex].complete = false;
         removeStrike(e);
-        console.log(false);
+        console.log(arr[dataIndex].complete);
       }
     });
+  });
+};
+
+const displayCompletion = (arr) => {
+  let n = 0;
+  let test = [];
+  arr.forEach((obj) => {
+    if (obj.complete === true) {
+      //   console.log(arr[n]);
+      //   console.log(n);
+      //   test.push(n);
+      //   strikeThrough();
+      testStrike(n);
+    }
+
+    // console.log(test);
+    n++;
   });
 };
 
@@ -113,6 +126,7 @@ export const displayAllTasks = (arr) => {
   removeItem(arr);
   editToDo(arr);
   setCompletion(arr);
+  displayCompletion(arr);
 };
 
 const makeToDo = (() => {
