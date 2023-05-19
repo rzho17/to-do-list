@@ -1,4 +1,4 @@
-import { addProject } from "./dom-manipulation";
+import { addProject, createOption, toggleDropDown } from "./dom-manipulation";
 
 class Project {
   constructor(project) {
@@ -24,22 +24,21 @@ export const createProject = () => {
 
     const newProject = new Project(getProject);
 
-    addProject(newProject);
-    // console.log(newProject);
-    // console.log(newProject.project);
+    if (newProject.project !== "") {
+      addProject(newProject);
+    }
     project.reset();
   });
 };
 
-createProject();
+createOption("sheesh");
 
 add.addEventListener("click", (e) => {
-  // createProject();
-  //
+  createProject();
 });
 
 drop.addEventListener("click", () => {
-  items.classList.toggle("displayItems");
+  toggleDropDown();
 });
 
 console.log(demo.project);

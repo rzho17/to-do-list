@@ -17,6 +17,26 @@ export const addProject = (project) => {
   return items;
 };
 
+export const toggleDropDown = () => {
+  const items = document.querySelector(".dropDownItems");
+
+  //   items.classList.toggle("displayItems");
+  items.classList.toggle("displayItems");
+};
+
+export const createOption = (project) => {
+  const select = document.querySelector("#project");
+
+  const newOption = document.createElement("option");
+
+  newOption.text = project;
+  newOption.value = project;
+
+  select.append(newOption);
+
+  return newOption;
+};
+
 //task dom manip
 const displayTasks = (task) => {
   const mainContent = document.querySelector(".mainContent");
