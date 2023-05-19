@@ -93,17 +93,10 @@ const setCompletion = (arr) => {
 
 const displayCompletion = (arr) => {
   let n = 0;
-  let test = [];
   arr.forEach((obj) => {
     if (obj.complete === true) {
-      //   console.log(arr[n]);
-      //   console.log(n);
-      //   test.push(n);
-      //   strikeThrough();
       testStrike(n);
     }
-
-    // console.log(test);
     n++;
   });
 };

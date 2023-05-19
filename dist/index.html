@@ -17,7 +17,13 @@
           <li class="home">Home</li>
           <li class="today">Today</li>
           <li class="week">Week</li>
-          <li class="projects">Projects</li>
+          <li class="projects">
+            Projects <button class="displayDropDown">dropdown</button>
+            <button class="addProject">Add</button>
+          </li>
+          <ul class="dropDownItems displayItems">
+            <li>hi</li>
+          </ul>
         </ul>
 
         <form action="">
@@ -116,6 +122,19 @@
             </select>
 
             <input type="button" value="close" />
+            <input type="submit" data-submit="submit" />
+          </fieldset>
+        </form>
+
+        <form action="" id="getProject">
+          <fieldset>
+            <legend>New Project</legend>
+
+            <button class="close">Close</button>
+
+            <label for="newProject"></label>
+            <input type="text" name="newProject" id="newProject" required />
+
             <input type="submit" data-submit="submit" />
           </fieldset>
         </form>

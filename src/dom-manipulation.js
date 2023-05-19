@@ -3,6 +3,21 @@ import chore from "./create-to-do";
 import makeToDo from "./create-to-do";
 import { displayAllTasks } from "./create-to-do";
 
+//project dom manip
+
+export const addProject = (project) => {
+  const items = document.querySelector(".dropDownItems");
+
+  const newLi = document.createElement("li");
+
+  newLi.textContent = project.project;
+
+  items.appendChild(newLi);
+
+  return items;
+};
+
+//task dom manip
 const displayTasks = (task) => {
   const mainContent = document.querySelector(".mainContent");
 
@@ -37,14 +52,21 @@ export const testStrike = (dataValue) => {
   const parentDiv = document.querySelector(
     '.taskContainer[data-number="' + dataValue + '"]'
   );
+
+  const checkBox = document.querySelector(
+    'input[data-number="' + dataValue + '"]'
+  );
   const strikeTitle = parentDiv.querySelector(".title");
   const strikeDetail = parentDiv.querySelector(".details");
   const strikeDate = parentDiv.querySelector(".date");
+
+  checkBox.checked = true;
 
   strikeTitle.classList.toggle("toDoChecked");
   strikeDetail.classList.toggle("toDoChecked");
   strikeDate.classList.toggle("toDoChecked");
 };
+
 export const removeStrike = (e) => {
   const parentDiv = e.target.parentElement;
   const strikeTitle = parentDiv.querySelector(".title");

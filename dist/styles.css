@@ -49,3 +49,7 @@ body {
 .toDoChecked {
   text-decoration: line-through;
 }
+
+.displayItems {
+  display: none;
+}
