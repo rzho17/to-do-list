@@ -1,4 +1,10 @@
-import { addProject, createOption, toggleDropDown } from "./dom-manipulation";
+import {
+  addProject,
+  createOption,
+  toggleDropDown,
+  clearOption,
+  toggleProject,
+} from "./dom-manipulation";
 
 class Project {
   constructor(project) {
@@ -11,6 +17,19 @@ const demo = new Project("Do Dishes");
 const drop = document.querySelector(".displayDropDown");
 const items = document.querySelector(".dropDownItems");
 const add = document.querySelector(".addProject");
+
+const addOption = () => {
+  const list = document.querySelectorAll(".projectLi");
+
+  clearOption("project");
+  clearOption("editProject");
+  createOption("Home", "project");
+  createOption("Home", "editProject");
+  list.forEach((item) => {
+    createOption(item.innerText, "project");
+    createOption(item.innerText, "editProject");
+  });
+};
 
 export const createProject = () => {
   const project = document.querySelector("#getProject");
@@ -27,13 +46,14 @@ export const createProject = () => {
     if (newProject.project !== "") {
       addProject(newProject);
     }
+    addOption();
+
     project.reset();
   });
 };
 
-createOption("sheesh");
-
 add.addEventListener("click", (e) => {
+  toggleProject();
   createProject();
 });
 

@@ -9,6 +9,7 @@ export const addProject = (project) => {
   const items = document.querySelector(".dropDownItems");
 
   const newLi = document.createElement("li");
+  newLi.className = "projectLi";
 
   newLi.textContent = project.project;
 
@@ -24,8 +25,8 @@ export const toggleDropDown = () => {
   items.classList.toggle("displayItems");
 };
 
-export const createOption = (project) => {
-  const select = document.querySelector("#project");
+export const createOption = (project, selector) => {
+  const select = document.querySelector(`#${selector}`);
 
   const newOption = document.createElement("option");
 
@@ -35,6 +36,19 @@ export const createOption = (project) => {
   select.append(newOption);
 
   return newOption;
+};
+
+export const clearOption = (selector) => {
+  const select = document.querySelector(`#${selector}`);
+
+  while (select.options.length > 0) {
+    select.remove(0);
+  }
+};
+
+export const toggleProject = () => {
+  const displayProject = document.querySelector("#getProject");
+  displayProject.classList.toggle("displayProject");
 };
 
 //task dom manip

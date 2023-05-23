@@ -53,3 +53,7 @@ body {
 .displayItems {
   display: none;
 }
+
+.displayProject {
+  display: none;
+}
