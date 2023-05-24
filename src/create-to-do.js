@@ -3,15 +3,17 @@ import displayTasks, {
   strikeThrough,
   testStrike,
 } from "./dom-manipulation";
+
 import { createP, clearContent, makeTaskContainer } from "./dom-manipulation";
 
 class ToDo {
-  constructor(title, description, dueDate, priority, complete) {
+  constructor(title, description, dueDate, priority, complete, project) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
     this.complete = complete;
+    this.project = project;
   }
 
   test() {
@@ -21,7 +23,7 @@ class ToDo {
 
 const removeItem = (arr) => {
   const removeTask = document.querySelectorAll(".remove");
-  console.log(arr);
+  //   console.log(arr);
 
   removeTask.forEach((item) => {
     item.addEventListener("click", (e) => {
@@ -29,7 +31,7 @@ const removeItem = (arr) => {
 
       clearContent();
       displayAllTasks(arr);
-      console.log(arr);
+      //   console.log(arr);
     });
   });
 };
@@ -38,12 +40,20 @@ const editToDo = (arr) => {
   const editForm = document.querySelector("#edit");
   const editButton = document.querySelectorAll(".editBtn");
 
+  //   console.log(arr);
+
   editButton.forEach((edit) => {
     edit.addEventListener("click", (e) => {
       let num = e.target.dataset.number;
 
+      const specificObject = arr[num];
+
       editForm.addEventListener("submit", (e) => {
         e.preventDefault();
+
+        // console.log(arr);
+        // console.log(arr[num].complete);
+        // console.log(arr, num);
 
         const formData = new FormData(editForm);
 
@@ -52,12 +62,19 @@ const editToDo = (arr) => {
         const editDueDate = formData.get("editDate");
         const editPriority = formData.get("editPriority");
 
+        const editComplete = specificObject.complete;
+        const editProject = formData.get("editProject");
+
         const editTask = new ToDo(
           editTitle,
           editDescription,
           editDueDate,
-          editPriority
+          editPriority,
+          editComplete,
+          editProject
         );
+
+        console.log(arr);
 
         if (num !== "") {
           arr.splice(num, 1, editTask);
@@ -81,11 +98,11 @@ const setCompletion = (arr) => {
       if (arr[dataIndex].complete === false) {
         arr[dataIndex].complete = true;
         strikeThrough(e);
-        console.log(arr[dataIndex].complete);
+        // console.log(arr[dataIndex].complete);
       } else {
         arr[dataIndex].complete = false;
         removeStrike(e);
-        console.log(arr[dataIndex].complete);
+        // console.log(arr[dataIndex].complete);
       }
     });
   });
@@ -120,6 +137,8 @@ export const displayAllTasks = (arr) => {
   editToDo(arr);
   setCompletion(arr);
   displayCompletion(arr);
+
+  console.log(arr);
 };
 
 const makeToDo = (() => {
@@ -136,8 +155,16 @@ const makeToDo = (() => {
     const dueDate = formData.get("date");
     const priority = formData.get("priority");
     const complete = false;
+    const project = formData.get("project");
 
-    const newToDo = new ToDo(title, description, dueDate, priority, complete);
+    const newToDo = new ToDo(
+      title,
+      description,
+      dueDate,
+      priority,
+      complete,
+      project
+    );
     arr.push(newToDo);
 
     clearContent();

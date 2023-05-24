@@ -4,6 +4,7 @@ import {
   toggleDropDown,
   clearOption,
   toggleProject,
+  changeProject,
 } from "./dom-manipulation";
 
 class Project {
@@ -31,6 +32,8 @@ const addOption = () => {
   });
 };
 
+changeProject();
+
 export const createProject = () => {
   const project = document.querySelector("#getProject");
 
@@ -48,6 +51,8 @@ export const createProject = () => {
     }
     addOption();
 
+    changeProject();
+
     project.reset();
   });
 };
@@ -60,7 +65,5 @@ add.addEventListener("click", (e) => {
 drop.addEventListener("click", () => {
   toggleDropDown();
 });
-
-console.log(demo.project);
 
 export default demo;

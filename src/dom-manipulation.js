@@ -51,6 +51,23 @@ export const toggleProject = () => {
   displayProject.classList.toggle("displayProject");
 };
 
+export const changeProject = () => {
+  const mainContent = document.querySelector(".mainContent");
+  const projectLi = document.querySelectorAll("li");
+  const heading = document.createElement("h2");
+
+  projectLi.forEach((item) => {
+    // console.log(item.innerText);
+    item.addEventListener("click", (e) => {
+      mainContent.innerHTML = "";
+      heading.textContent = e.target.textContent;
+
+      mainContent.append(heading);
+      //   console.log(e.target.textContent);
+    });
+  });
+};
+
 //task dom manip
 const displayTasks = (task) => {
   const mainContent = document.querySelector(".mainContent");
