@@ -3,6 +3,18 @@ import chore from "./create-to-do";
 import makeToDo from "./create-to-do";
 import { displayAllTasks } from "./create-to-do";
 
+//display tasks for nav
+
+export const homeTasks = () => {
+  const homeTask = document.querySelector(".taskTitle");
+
+  const test = document.createElement("div");
+
+  //   test.textContent = "yo";
+  displayAllTasks(makeToDo.arr);
+  // homeTask.append(displayAllTasks(makeToDo.arr));
+};
+
 //project dom manip
 
 export const addProject = (project) => {
@@ -51,22 +63,26 @@ export const toggleProject = () => {
   displayProject.classList.toggle("displayProject");
 };
 
-export const changeProject = () => {
-  const mainContent = document.querySelector(".mainContent");
-  const projectLi = document.querySelectorAll("li");
-  const heading = document.createElement("h2");
+// export const changeProject = () => {
+//   const mainContent = document.querySelector(".mainContent");
+//   const projectLi = document.querySelectorAll("li");
+//   const heading = document.createElement("h2");
+//   heading.className = "taskTitle";
 
-  projectLi.forEach((item) => {
-    // console.log(item.innerText);
-    item.addEventListener("click", (e) => {
-      mainContent.innerHTML = "";
-      heading.textContent = e.target.textContent;
+//   projectLi.forEach((item) => {
+//     // console.log(item.innerText);
+//     item.addEventListener("click", (e) => {
+//       mainContent.innerHTML = "";
+//       heading.textContent = e.target.textContent;
 
-      mainContent.append(heading);
-      //   console.log(e.target.textContent);
-    });
-  });
-};
+//       mainContent.append(heading);
+
+//       homeTasks(); //Will display each task for the home section, which will be all of the tasks created
+
+//       //   console.log(e.target.textContent);
+//     });
+//   });
+// };
 
 //task dom manip
 const displayTasks = (task) => {
@@ -127,6 +143,12 @@ export const removeStrike = (e) => {
   strikeTitle.classList.remove("toDoChecked");
   strikeDetail.classList.remove("toDoChecked");
   strikeDate.classList.remove("toDoChecked");
+};
+
+export const toggleEditForm = () => {
+  const editForm = document.querySelector("#edit");
+  editForm.classList.toggle("displayEdit");
+  console.log("hi");
 };
 
 export const makeTaskContainer = (title, detail, day, n) => {

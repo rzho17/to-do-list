@@ -2,6 +2,7 @@ import displayTasks, {
   removeStrike,
   strikeThrough,
   testStrike,
+  toggleEditForm,
 } from "./dom-manipulation";
 
 import { createP, clearContent, makeTaskContainer } from "./dom-manipulation";
@@ -21,7 +22,7 @@ class ToDo {
   }
 }
 
-const removeItem = (arr) => {
+export const removeItem = (arr) => {
   const removeTask = document.querySelectorAll(".remove");
   //   console.log(arr);
 
@@ -36,7 +37,13 @@ const removeItem = (arr) => {
   });
 };
 
-const editToDo = (arr) => {
+// const filterTasks = (arr) => {
+//     console.log(makeToDo.arr)
+// };
+
+// filterTasks();
+
+export const editToDo = (arr) => {
   const editForm = document.querySelector("#edit");
   const editButton = document.querySelectorAll(".editBtn");
 
@@ -45,8 +52,9 @@ const editToDo = (arr) => {
   editButton.forEach((edit) => {
     edit.addEventListener("click", (e) => {
       let num = e.target.dataset.number;
-
       const specificObject = arr[num];
+
+      //   toggleEditForm(); turn this back on when nearing completetion
 
       editForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -88,7 +96,7 @@ const editToDo = (arr) => {
   });
 };
 
-const setCompletion = (arr) => {
+export const setCompletion = (arr) => {
   const check = document.querySelectorAll(".complete");
 
   check.forEach((box) => {
@@ -108,7 +116,7 @@ const setCompletion = (arr) => {
   });
 };
 
-const displayCompletion = (arr) => {
+export const displayCompletion = (arr) => {
   let n = 0;
   arr.forEach((obj) => {
     if (obj.complete === true) {
@@ -169,7 +177,7 @@ const makeToDo = (() => {
 
     clearContent();
     displayAllTasks(arr);
-    editToDo(arr);
+    // editToDo(arr);
   });
   return { arr };
 })();

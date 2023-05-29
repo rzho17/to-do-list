@@ -54,6 +54,10 @@ body {
   display: none;
 }
 
+.displayEdit {
+  /* display: none; */
+}
+
 .displayProject {
   display: none;
 }
