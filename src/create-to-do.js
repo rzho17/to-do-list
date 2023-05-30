@@ -1,4 +1,5 @@
 import displayTasks, {
+  initialLoad,
   removeStrike,
   strikeThrough,
   testStrike,
@@ -31,6 +32,7 @@ export const removeItem = (arr) => {
       arr.splice(e.target.dataset.number, 1);
 
       clearContent();
+      initialLoad();
       displayAllTasks(arr);
       //   console.log(arr);
     });
@@ -106,11 +108,11 @@ export const setCompletion = (arr) => {
       if (arr[dataIndex].complete === false) {
         arr[dataIndex].complete = true;
         strikeThrough(e);
-        // console.log(arr[dataIndex].complete);
+        console.log(arr[dataIndex].complete);
       } else {
         arr[dataIndex].complete = false;
         removeStrike(e);
-        // console.log(arr[dataIndex].complete);
+        console.log(arr[dataIndex].complete);
       }
     });
   });
@@ -141,12 +143,14 @@ export const displayAllTasks = (arr) => {
     //take the key of the objects and store them or have hard written values for it
     // take the values and store them and display them on the mainContent
   });
+
   removeItem(arr);
   editToDo(arr);
   setCompletion(arr);
   displayCompletion(arr);
 
-  console.log(arr);
+  return [];
+  //   console.log(arr);
 };
 
 const makeToDo = (() => {
@@ -176,6 +180,7 @@ const makeToDo = (() => {
     arr.push(newToDo);
 
     clearContent();
+    initialLoad();
     displayAllTasks(arr);
     // editToDo(arr);
   });

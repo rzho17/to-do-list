@@ -3,18 +3,48 @@ import chore from "./create-to-do";
 import makeToDo from "./create-to-do";
 import { displayAllTasks } from "./create-to-do";
 
+//initial page load
+
+export const initialLoad = () => {
+  const mainContent = document.querySelector(".mainContent");
+  const heading = document.createElement("h2");
+  heading.className = "taskTitle";
+  heading.textContent = "Home";
+
+  mainContent.append(heading);
+};
+
 //display tasks for nav
 
 export const homeTasks = () => {
+  const mainContent = document.querySelector(".mainContent");
   const homeTask = document.querySelector(".taskTitle");
 
   const test = document.createElement("div");
 
   //   test.textContent = "yo";
-  displayAllTasks(makeToDo.arr);
+  clearContent();
+  initialLoad();
+  //   console.log(displayAllTasks(makeToDo.arr));
+  //   console.log(makeToDo.arr);
+
+  //   console.log(displayAllTasks(makeToDo.arr));
+
+  //   if (displayAllTasks(makeToDo.arr) === undefined) {
+  //     console.log("hi");
+  //   } else {
+  //     mainContent.append(displayAllTasks(makeToDo.arr));
+  //   }
+  mainContent.append(displayAllTasks(makeToDo.arr));
+
   // homeTask.append(displayAllTasks(makeToDo.arr));
 };
 
+const home = document.querySelector(".home");
+
+home.addEventListener("click", () => {
+  homeTasks();
+});
 //project dom manip
 
 export const addProject = (project) => {
@@ -87,6 +117,9 @@ export const toggleProject = () => {
 //task dom manip
 const displayTasks = (task) => {
   const mainContent = document.querySelector(".mainContent");
+  // const heading = document.querySelector(".taskTitle");
+
+  //   heading.append(task);
 
   mainContent.append(task);
 };
@@ -101,11 +134,14 @@ export const createP = (text, value) => {
 
 export const clearContent = () => {
   const mainContent = document.querySelector(".mainContent");
+
   mainContent.innerHTML = "";
+  //need to figure out how to clear this without clearing the title as i am appending things to the title
 };
 
 export const strikeThrough = (e) => {
   const parentDiv = e.target.parentElement;
+  //   console.log(e.target.parentElement);
   const strikeTitle = parentDiv.querySelector(".title");
   const strikeDetail = parentDiv.querySelector(".details");
   const strikeDate = parentDiv.querySelector(".date");
@@ -116,22 +152,33 @@ export const strikeThrough = (e) => {
 };
 
 export const testStrike = (dataValue) => {
+  console.log(dataValue);
+
   const parentDiv = document.querySelector(
     '.taskContainer[data-number="' + dataValue + '"]'
   );
 
+  console.log(parentDiv);
+
   const checkBox = document.querySelector(
     'input[data-number="' + dataValue + '"]'
   );
-  const strikeTitle = parentDiv.querySelector(".title");
-  const strikeDetail = parentDiv.querySelector(".details");
-  const strikeDate = parentDiv.querySelector(".date");
 
-  checkBox.checked = true;
+  console.log(checkBox);
 
-  strikeTitle.classList.toggle("toDoChecked");
-  strikeDetail.classList.toggle("toDoChecked");
-  strikeDate.classList.toggle("toDoChecked");
+  if (parentDiv === null || checkBox === null) {
+    console.log("nothing");
+  } else {
+    const strikeTitle = parentDiv.querySelector(".title");
+    const strikeDetail = parentDiv.querySelector(".details");
+    const strikeDate = parentDiv.querySelector(".date");
+
+    checkBox.checked = true;
+
+    strikeTitle.classList.toggle("toDoChecked");
+    strikeDetail.classList.toggle("toDoChecked");
+    strikeDate.classList.toggle("toDoChecked");
+  }
 };
 
 export const removeStrike = (e) => {

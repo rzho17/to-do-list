@@ -13,6 +13,7 @@ import displayTasks, {
   toggleProject,
   homeTasks,
   makeTaskContainer,
+  clearContent,
   // changeProject,
 } from "./dom-manipulation";
 
@@ -42,14 +43,12 @@ const addOption = () => {
 };
 
 export const filterTasks = (taskTitle) => {
-  // conso
-
-  makeToDo.arr.forEach((item, index, arr) => {
+  makeToDo.arr.forEach((item, index) => {
     if (item.project === taskTitle) {
       //need to be able to keep the data number on change to each respective item
       //so when they are being edited or changed they will still reflect on the original array
 
-      console.log(index);
+      // console.log(index);
 
       displayTasks(
         makeTaskContainer(item.title, item.description, item.dueDate, index)
@@ -61,13 +60,16 @@ export const filterTasks = (taskTitle) => {
   editToDo(makeToDo.arr);
   setCompletion(makeToDo.arr);
   displayCompletion(makeToDo.arr);
+
+  return [];
 };
 
 const changeProject = () => {
   const mainContent = document.querySelector(".mainContent");
-  const projectLi = document.querySelectorAll("li");
+  const projectLi = document.querySelectorAll(".projectLi");
   const heading = document.createElement("h2");
   heading.className = "taskTitle";
+  heading.textContent = "Home";
 
   projectLi.forEach((item) => {
     // console.log(item.innerText);
@@ -75,9 +77,16 @@ const changeProject = () => {
       mainContent.innerHTML = "";
       heading.textContent = e.target.textContent;
 
-      console.log(makeToDo.arr);
+      // console.log(makeToDo.arr);
 
       mainContent.append(heading);
+      // console.log(e.target.textContent);
+      // if (e.target.textContent !== undefined) {
+      //   console.log("nothin");
+      // } else {
+      //   mainContent.append(filterTasks(e.target.textContent));
+      // }
+      // console.log(e.target.textContent);
       mainContent.append(filterTasks(e.target.textContent));
 
       // homeTasks(); //Will display each task for the home section, which will be all of the tasks created
@@ -119,7 +128,7 @@ export const createProject = () => {
 add.addEventListener("click", (e) => {
   toggleProject();
   createProject();
-  filterTasks();
+  // filterTasks();
 });
 
 drop.addEventListener("click", () => {
