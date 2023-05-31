@@ -1,10 +1,13 @@
 import displayTasks, {
+  homeTasks,
   initialLoad,
   removeStrike,
   strikeThrough,
   testStrike,
   toggleEditForm,
 } from "./dom-manipulation";
+
+import { saveLocale } from "./locale-storage";
 
 import { createP, clearContent, makeTaskContainer } from "./dom-manipulation";
 
@@ -22,6 +25,10 @@ class ToDo {
     console.log("hi");
   }
 }
+
+// displayAllTasks(JSON.parse(localStorage.getItem("tasks")));
+
+console.log(JSON.parse(localStorage.getItem("tasks")));
 
 export const removeItem = (arr) => {
   const removeTask = document.querySelectorAll(".remove");
@@ -114,6 +121,7 @@ export const setCompletion = (arr) => {
         removeStrike(e);
         console.log(arr[dataIndex].complete);
       }
+      saveLocale(arr);
     });
   });
 };
@@ -148,14 +156,71 @@ export const displayAllTasks = (arr) => {
   editToDo(arr);
   setCompletion(arr);
   displayCompletion(arr);
+  saveLocale(arr);
 
   return [];
   //   console.log(arr);
 };
 
+export const taskFeatures = (arr) => {
+  removeItem(arr);
+  editToDo(arr);
+  setCompletion(arr);
+  displayCompletion(arr);
+};
+
+// const mainContent = document.querySelector(".mainContent");
+// const demo = document.createElement("h1");
+// const input = document.querySelector(".demo");
+// demo.innerText = localStorage.getItem("key");
+
+// const hehe = [
+//   {
+//     name: "billy",
+//     age: 21,
+//   },
+//   {
+//     name: "joe",
+//     age: 40,
+//   },
+//   {
+//     name: "boby",
+//     age: 10,
+//   },
+// ];
+
+// input.addEventListener("keyup", () => {
+//   const stringify = JSON.stringify(hehe);
+//   localStorage.setItem("key", stringify);
+//   demo.innerText = localStorage.getItem("key");
+//   const destring = JSON.parse(stringify);
+//   console.log(destring[1].name);
+//   mainContent.append(destring[2].name);
+// });
+// mainContent.append(demo);
+
+// console.log(localStorage.getItem("tasks"));
+
+// console.log(JSON.parse(localStorage.getItem("tasks")));
+
+// const saveLocale = (arr) => {
+//   const stringify = JSON.stringify(arr);
+//   localStorage.setItem("tasks", stringify);
+
+//   //   localStorage.removeItem("tasks");
+//   //   localStorage.removeItem("key");
+//   //   console.log(stringify);
+// };
+
 const makeToDo = (() => {
   const form = document.querySelector("form");
-  const arr = [];
+  let arr = [];
+
+  if (localStorage.length === 0) {
+    arr = [];
+  } else {
+    arr = JSON.parse(localStorage.getItem("tasks"));
+  }
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
