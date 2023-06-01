@@ -49,15 +49,38 @@ home.addEventListener("click", () => {
 
 export const addProject = (project) => {
   const items = document.querySelector(".dropDownItems");
+  const projectLi = document.querySelectorAll(".projectLi");
 
-  const newLi = document.createElement("li");
-  newLi.className = "projectLi";
+  //   removeProjects();
+  //   items.innerHTML = "";
 
-  newLi.textContent = project.project;
+  //need to figure out how to clear the li list before appending the new li
 
-  items.appendChild(newLi);
+  //   items.textContent = "";
+  project.forEach((item) => {
+    const newLi = document.createElement("li");
+    newLi.className = "projectLi";
+
+    newLi.textContent = item.project;
+
+    items.append(newLi);
+    console.log(newLi);
+    // console.log(item);
+  });
+
+  //   const newLi = document.createElement("li");
+  //   newLi.className = "projectLi";
+
+  //   newLi.textContent = project.project;
+
+  //   items.appendChild(newLi);
 
   return items;
+};
+
+export const removeProjects = () => {
+  const items = document.querySelector(".dropDownItems");
+  items.innerHTML = "";
 };
 
 export const toggleDropDown = () => {
@@ -93,26 +116,7 @@ export const toggleProject = () => {
   displayProject.classList.toggle("displayProject");
 };
 
-// export const changeProject = () => {
-//   const mainContent = document.querySelector(".mainContent");
-//   const projectLi = document.querySelectorAll("li");
-//   const heading = document.createElement("h2");
-//   heading.className = "taskTitle";
-
-//   projectLi.forEach((item) => {
-//     // console.log(item.innerText);
-//     item.addEventListener("click", (e) => {
-//       mainContent.innerHTML = "";
-//       heading.textContent = e.target.textContent;
-
-//       mainContent.append(heading);
-
-//       homeTasks(); //Will display each task for the home section, which will be all of the tasks created
-
-//       //   console.log(e.target.textContent);
-//     });
-//   });
-// };
+//
 
 //task dom manip
 const displayTasks = (task) => {

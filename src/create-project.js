@@ -5,6 +5,7 @@ import {
   isToday,
   isWithinInterval,
 } from "date-fns";
+
 import makeToDo, {
   displayAllTasks,
   removeItem,
@@ -13,6 +14,7 @@ import makeToDo, {
   displayCompletion,
   taskFeatures,
 } from "./create-to-do";
+
 import displayTasks, {
   addProject,
   createOption,
@@ -22,10 +24,12 @@ import displayTasks, {
   homeTasks,
   makeTaskContainer,
   clearContent,
+  removeProjects,
   // changeProject,
 } from "./dom-manipulation";
 
 import addDays from "date-fns/addDays";
+import { saveProjects } from "./locale-storage";
 
 class Project {
   constructor(project) {
@@ -214,6 +218,7 @@ toggleWeek.addEventListener("click", () => {
 
   filterWeek();
 });
+
 const changeProject = () => {
   const mainContent = document.querySelector(".mainContent");
   const projectLi = document.querySelectorAll(".projectLi");
@@ -254,6 +259,9 @@ changeProject();
 
 export const createProject = () => {
   const project = document.querySelector("#getProject");
+  console.log(localStorage.getItem("project"));
+
+  let projectArr = [];
 
   project.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -265,20 +273,32 @@ export const createProject = () => {
     const newProject = new Project(getProject);
 
     if (newProject.project !== "") {
-      addProject(newProject);
+      projectArr.push(newProject);
+      saveProjects(projectArr);
+      removeProjects();
     }
+
+    addProject(projectArr);
+
     addOption();
 
     changeProject();
 
     project.reset();
   });
+
+  return projectArr;
 };
 
+const createProjArr = createProject();
+
 add.addEventListener("click", (e) => {
+  // console.log(localStorage.getItem("project"));
   toggleProject();
   createProject();
-  filterWeek();
+  // console.log(createProjArr);
+  // filterWeek();
+
   // filterDays();
   // filterTasks();
 });
@@ -298,6 +318,7 @@ today.addEventListener("click", () => {
 
   filterDays();
 });
+
 drop.addEventListener("click", () => {
   toggleDropDown();
 });
