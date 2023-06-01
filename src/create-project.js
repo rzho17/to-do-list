@@ -43,7 +43,7 @@ const drop = document.querySelector(".displayDropDown");
 // const items = document.querySelector(".dropDownItems");
 const add = document.querySelector(".addProject");
 
-const addOption = () => {
+export const addOption = () => {
   const list = document.querySelectorAll(".projectLi");
 
   clearOption("project");
@@ -219,7 +219,7 @@ toggleWeek.addEventListener("click", () => {
   filterWeek();
 });
 
-const changeProject = () => {
+export const changeProject = () => {
   const mainContent = document.querySelector(".mainContent");
   const projectLi = document.querySelectorAll(".projectLi");
   const heading = document.createElement("h2");
@@ -257,14 +257,25 @@ changeProject();
 
 // filterTasks();
 
-export const createProject = () => {
+export const createProject = (() => {
   const project = document.querySelector("#getProject");
-  console.log(localStorage.getItem("project"));
 
   let projectArr = [];
 
+  if (
+    (localStorage.length === 0 && typeof localStorage !== "undefined") ||
+    localStorage.getItem("project") === null
+  ) {
+    projectArr = [];
+  } else {
+    projectArr = JSON.parse(localStorage.getItem("project"));
+  }
+
+  // console.log(localStorage.getItem("project"));
+
   project.addEventListener("submit", (e) => {
     e.preventDefault();
+    // removeProjects();
 
     const formData = new FormData(project);
 
@@ -278,6 +289,7 @@ export const createProject = () => {
       removeProjects();
     }
 
+    console.log(projectArr);
     addProject(projectArr);
 
     addOption();
@@ -287,15 +299,25 @@ export const createProject = () => {
     project.reset();
   });
 
-  return projectArr;
-};
+  // console.log(projectArr);
+  // console.log("yuo");
+  return { projectArr };
+})();
 
-const createProjArr = createProject();
+const mainContent = document.querySelector(".mainContent");
+
+// localStorage.clear();
+// export const createProjArr = createProject;
 
 add.addEventListener("click", (e) => {
   // console.log(localStorage.getItem("project"));
   toggleProject();
-  createProject();
+  // createProject();
+
+  console.log("hi");
+  console.log(createProject.projectArr);
+  // mainContent.textContent = createProject.projectArr;
+
   // console.log(createProjArr);
   // filterWeek();
 

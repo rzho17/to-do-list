@@ -1,3 +1,4 @@
+import { addOption, changeProject, createProject } from "./create-project";
 import chore from "./create-to-do";
 // import { makeToDo } from "./create-to-do";
 import makeToDo from "./create-to-do";
@@ -49,14 +50,7 @@ home.addEventListener("click", () => {
 
 export const addProject = (project) => {
   const items = document.querySelector(".dropDownItems");
-  const projectLi = document.querySelectorAll(".projectLi");
 
-  //   removeProjects();
-  //   items.innerHTML = "";
-
-  //need to figure out how to clear the li list before appending the new li
-
-  //   items.textContent = "";
   project.forEach((item) => {
     const newLi = document.createElement("li");
     newLi.className = "projectLi";
@@ -64,16 +58,8 @@ export const addProject = (project) => {
     newLi.textContent = item.project;
 
     items.append(newLi);
-    console.log(newLi);
-    // console.log(item);
+    // console.log(newLi);
   });
-
-  //   const newLi = document.createElement("li");
-  //   newLi.className = "projectLi";
-
-  //   newLi.textContent = project.project;
-
-  //   items.appendChild(newLi);
 
   return items;
 };
@@ -114,6 +100,19 @@ export const clearOption = (selector) => {
 export const toggleProject = () => {
   const displayProject = document.querySelector("#getProject");
   displayProject.classList.toggle("displayProject");
+};
+
+export const initialProjectLoad = () => {
+  const dropDown = document.querySelector(".dropDownItems");
+  const homeTask = document.querySelector(".taskTitle");
+
+  const test = document.createElement("div");
+
+  removeProjects();
+
+  addProject(createProject.projectArr);
+  addOption();
+  changeProject();
 };
 
 //
