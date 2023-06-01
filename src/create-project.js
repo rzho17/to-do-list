@@ -1,19 +1,6 @@
-import {
-  addWeeks,
-  format,
-  isSameDay,
-  isToday,
-  isWithinInterval,
-} from "date-fns";
+import { addWeeks, isSameDay, isWithinInterval } from "date-fns";
 
-import makeToDo, {
-  displayAllTasks,
-  removeItem,
-  editToDo,
-  setCompletion,
-  displayCompletion,
-  taskFeatures,
-} from "./create-to-do";
+import makeToDo, { taskFeatures } from "./create-to-do";
 
 import displayTasks, {
   addProject,
@@ -21,14 +8,13 @@ import displayTasks, {
   toggleDropDown,
   clearOption,
   toggleProject,
-  homeTasks,
   makeTaskContainer,
   clearContent,
   removeProjects,
+  homeTasks,
   // changeProject,
 } from "./dom-manipulation";
 
-import addDays from "date-fns/addDays";
 import { saveProjects } from "./locale-storage";
 
 class Project {
@@ -37,7 +23,7 @@ class Project {
   }
 }
 
-const demo = new Project("Do Dishes");
+// const demo = new Project("Do Dishes");
 
 const drop = document.querySelector(".displayDropDown");
 // const items = document.querySelector(".dropDownItems");
@@ -72,76 +58,22 @@ export const filterTasks = (taskTitle) => {
 
   taskFeatures(makeToDo.arr);
 
-  // removeItem(makeToDo.arr);
-  // editToDo(makeToDo.arr);
-  // setCompletion(makeToDo.arr);
-  // displayCompletion(makeToDo.arr);
-
   return [];
 };
 
-export const filterDays = (date) => {
-  // console.log(makeToDo.arr.dueDate);
-
+export const filterDays = () => {
   const today = new Date();
-  const newToday = addDays(today, 1);
-  const checkToday = isToday(newToday);
-
-  const addWeek = addWeeks(today, 1);
-
-  // const hehe = new Date("2023-06-01");
-  // console.log(today);
-  // console.log(addWeek);
-
-  // console.log(hehe > today && hehe < addWeek);
-
-  const hehe = new Date("2023-05-31");
-
-  // console.log(hehe.getDate());
-  // console.log(hehe === today);
-
-  // console.log(hehe.getDate() === today.getDate());
-  // console.log(newToday);
-
-  let testToday = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
-  // let testDay = `${hehe.getFullYear()}-${hehe.getMonth()}-${hehe.getDate()}`;
-  // console.log(testToday);
-  // console.log(testDay);
 
   makeToDo.arr.forEach((day, index) => {
-    // const parse = Date.parse(day);
-
     const replace = day.dueDate.replaceAll("-", "/");
 
-    // console.log(replace);
-
-    // console.log(day.dueDate);
     const test = new Date(replace);
 
-    // console.log(test);
-    // console.log(test.toLocaleDateString());
-    // const testAdd = addDays(test, 1);
-    // let testDay = `${test.getFullYear()}-${test.getMonth()}-${test.getDate()}`;
-
-    // console.log(day.dueDate);
-    // console.log(testToday);
-    // console.log(testDay);
     const result = isSameDay(test, today);
-    // console.log(today);
-    // console.log(test);
-    // console.log(testAdd);
-    // console.log(addWeek(test, 1));
-
-    // if (result) {
-    //   console.log("hi");
-    //   // filterTasks();
-    // }
 
     if (result) {
       //need to be able to keep the data number on change to each respective item
       //so when they are being edited or changed they will still reflect on the original array
-
-      // console.log(index);
 
       displayTasks(
         makeTaskContainer(day.title, day.description, day.dueDate, index)
@@ -151,12 +83,6 @@ export const filterDays = (date) => {
 
   taskFeatures(makeToDo.arr);
   return [];
-
-  // console.log(test.getDate());
-  // console.log(day);
-  // console.log(test);
-  // console.log(today.getFullYear(), today.getMonth(), today.getDate());
-  // console.log(test.getFullYear(), test.getMonth(), test.getDate());
 };
 
 export const filterWeek = () => {
@@ -171,23 +97,18 @@ export const filterWeek = () => {
 
     currentToday.setHours(0, 0, 0, 0);
 
-    console.log(currentToday);
+    // console.log(currentToday);
 
     const addWeek = addWeeks(currentToday, 1);
 
-    // console.log(currentToday);
-
-    // console.log(selectedDate);
-    console.log(addWeek);
+    // console.log(addWeek);
 
     const withinWeek = isWithinInterval(selectedDate, {
       start: currentToday,
       end: addWeek,
     });
 
-    console.log(withinWeek);
-
-    const result = isSameDay(selectedDate, currentToday);
+    // const result = isSameDay(selectedDate, currentToday);
 
     if (withinWeek) {
       //need to be able to keep the data number on change to each respective item
@@ -227,35 +148,36 @@ export const changeProject = () => {
   heading.textContent = "Home";
 
   projectLi.forEach((item) => {
-    // console.log(item.innerText);
     item.addEventListener("click", (e) => {
       mainContent.innerHTML = "";
       heading.textContent = e.target.textContent;
 
-      // console.log(makeToDo.arr);
-
       mainContent.append(heading);
-      // console.log(e.target.textContent);
-      // if (e.target.textContent !== undefined) {
-      //   console.log("nothin");
-      // } else {
-      //   mainContent.append(filterTasks(e.target.textContent));
-      // }
-      // console.log(e.target.textContent);
+
       mainContent.append(filterTasks(e.target.textContent));
-
-      // homeTasks(); //Will display each task for the home section, which will be all of the tasks created
-      // filterTasks();
-
-      // mainContent.append(filterTasks());
-      //   console.log(e.target.textContent);
     });
   });
 };
 
-changeProject();
+export const submitProject = (project) => {
+  const mainContent = document.querySelector(".mainContent");
+  const heading = document.createElement("h2");
+  heading.className = "taskTitle";
+  heading.textContent = "Home";
 
-// filterTasks();
+  mainContent.innerHTML = "";
+  heading.textContent = project;
+
+  mainContent.append(heading);
+
+  if (project === "Home") {
+    homeTasks();
+  } else {
+    mainContent.append(filterTasks(project));
+  }
+};
+
+changeProject();
 
 export const createProject = (() => {
   const project = document.querySelector("#getProject");
@@ -289,7 +211,6 @@ export const createProject = (() => {
       removeProjects();
     }
 
-    console.log(projectArr);
     addProject(projectArr);
 
     addOption();
@@ -304,25 +225,13 @@ export const createProject = (() => {
   return { projectArr };
 })();
 
-const mainContent = document.querySelector(".mainContent");
-
 // localStorage.clear();
-// export const createProjArr = createProject;
 
 add.addEventListener("click", (e) => {
-  // console.log(localStorage.getItem("project"));
   toggleProject();
-  // createProject();
 
-  console.log("hi");
-  console.log(createProject.projectArr);
-  // mainContent.textContent = createProject.projectArr;
-
-  // console.log(createProjArr);
-  // filterWeek();
-
-  // filterDays();
-  // filterTasks();
+  // console.log("hi");
+  // console.log(createProject.projectArr);
 });
 
 const today = document.querySelector(".today");
@@ -345,4 +254,4 @@ drop.addEventListener("click", () => {
   toggleDropDown();
 });
 
-export default demo;
+// export default demo;

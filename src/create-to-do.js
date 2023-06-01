@@ -1,15 +1,15 @@
+import { changeProject, submitProject } from "./create-project";
 import displayTasks, {
-  homeTasks,
   initialLoad,
   removeStrike,
   strikeThrough,
   testStrike,
-  toggleEditForm,
+  clearContent,
+  makeTaskContainer,
+  editLoad,
 } from "./dom-manipulation";
 
 import { saveLocale } from "./locale-storage";
-
-import { createP, clearContent, makeTaskContainer } from "./dom-manipulation";
 
 class ToDo {
   constructor(title, description, dueDate, priority, complete, project) {
@@ -21,18 +21,15 @@ class ToDo {
     this.project = project;
   }
 
-  test() {
-    console.log("hi");
-  }
+  //   test() {
+  //     console.log("hi");
+  //   }
 }
-
-// displayAllTasks(JSON.parse(localStorage.getItem("tasks")));
 
 console.log(JSON.parse(localStorage.getItem("tasks")));
 
 export const removeItem = (arr) => {
   const removeTask = document.querySelectorAll(".remove");
-  //   console.log(arr);
 
   removeTask.forEach((item) => {
     item.addEventListener("click", (e) => {
@@ -41,22 +38,13 @@ export const removeItem = (arr) => {
       clearContent();
       initialLoad();
       displayAllTasks(arr);
-      //   console.log(arr);
     });
   });
 };
 
-// const filterTasks = (arr) => {
-//     console.log(makeToDo.arr)
-// };
-
-// filterTasks();
-
 export const editToDo = (arr) => {
   const editForm = document.querySelector("#edit");
   const editButton = document.querySelectorAll(".editBtn");
-
-  //   console.log(arr);
 
   editButton.forEach((edit) => {
     edit.addEventListener("click", (e) => {
@@ -68,17 +56,12 @@ export const editToDo = (arr) => {
       editForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        // console.log(arr);
-        // console.log(arr[num].complete);
-        // console.log(arr, num);
-
         const formData = new FormData(editForm);
 
         const editTitle = formData.get("editTitle");
         const editDescription = formData.get("editDescription");
         const editDueDate = formData.get("editDate");
         const editPriority = formData.get("editPriority");
-
         const editComplete = specificObject.complete;
         const editProject = formData.get("editProject");
 
@@ -96,7 +79,9 @@ export const editToDo = (arr) => {
         if (num !== "") {
           arr.splice(num, 1, editTask);
           clearContent();
+          editLoad(editProject);
           displayAllTasks(arr);
+          submitProject(editProject);
         }
 
         num = "";
@@ -139,17 +124,11 @@ export const displayCompletion = (arr) => {
 export const displayAllTasks = (arr) => {
   let n = 0;
   arr.forEach((e) => {
-    // const keys = Object.keys(e);
     const values = Object.values(e);
 
     displayTasks(makeTaskContainer(values[0], values[1], values[2], n));
 
     n++;
-
-    //need a loop to go through array
-    //need another loop to loop through each index of the array
-    //take the key of the objects and store them or have hard written values for it
-    // take the values and store them and display them on the mainContent
   });
 
   removeItem(arr);
@@ -159,7 +138,6 @@ export const displayAllTasks = (arr) => {
   saveLocale(arr);
 
   return [];
-  //   console.log(arr);
 };
 
 export const taskFeatures = (arr) => {
@@ -168,49 +146,6 @@ export const taskFeatures = (arr) => {
   setCompletion(arr);
   displayCompletion(arr);
 };
-
-// const mainContent = document.querySelector(".mainContent");
-// const demo = document.createElement("h1");
-// const input = document.querySelector(".demo");
-// demo.innerText = localStorage.getItem("key");
-
-// const hehe = [
-//   {
-//     name: "billy",
-//     age: 21,
-//   },
-//   {
-//     name: "joe",
-//     age: 40,
-//   },
-//   {
-//     name: "boby",
-//     age: 10,
-//   },
-// ];
-
-// input.addEventListener("keyup", () => {
-//   const stringify = JSON.stringify(hehe);
-//   localStorage.setItem("key", stringify);
-//   demo.innerText = localStorage.getItem("key");
-//   const destring = JSON.parse(stringify);
-//   console.log(destring[1].name);
-//   mainContent.append(destring[2].name);
-// });
-// mainContent.append(demo);
-
-// console.log(localStorage.getItem("tasks"));
-
-// console.log(JSON.parse(localStorage.getItem("tasks")));
-
-// const saveLocale = (arr) => {
-//   const stringify = JSON.stringify(arr);
-//   localStorage.setItem("tasks", stringify);
-
-//   //   localStorage.removeItem("tasks");
-//   //   localStorage.removeItem("key");
-//   //   console.log(stringify);
-// };
 
 const makeToDo = (() => {
   const form = document.querySelector("form");
@@ -247,9 +182,13 @@ const makeToDo = (() => {
     clearContent();
     initialLoad();
     displayAllTasks(arr);
-    // editToDo(arr);
+    submitProject(project);
+    // changeProject(project);
+    // console.log(project);
   });
   return { arr };
 })();
+
+// localStorage.clear();
 
 export default makeToDo;

@@ -1,6 +1,5 @@
 import { addOption, changeProject, createProject } from "./create-project";
-import chore from "./create-to-do";
-// import { makeToDo } from "./create-to-do";
+
 import makeToDo from "./create-to-do";
 import { displayAllTasks } from "./create-to-do";
 
@@ -15,30 +14,24 @@ export const initialLoad = () => {
   mainContent.append(heading);
 };
 
+export const editLoad = (project) => {
+  const mainContent = document.querySelector(".mainContent");
+  const heading = document.createElement("h2");
+  heading.className = "taskTitle";
+  heading.textContent = project;
+
+  mainContent.append(heading);
+};
+
 //display tasks for nav
 
 export const homeTasks = () => {
   const mainContent = document.querySelector(".mainContent");
-  const homeTask = document.querySelector(".taskTitle");
 
-  const test = document.createElement("div");
-
-  //   test.textContent = "yo";
   clearContent();
   initialLoad();
-  //   console.log(displayAllTasks(makeToDo.arr));
-  //   console.log(makeToDo.arr);
 
-  //   console.log(displayAllTasks(makeToDo.arr));
-
-  //   if (displayAllTasks(makeToDo.arr) === undefined) {
-  //     console.log("hi");
-  //   } else {
-  //     mainContent.append(displayAllTasks(makeToDo.arr));
-  //   }
   mainContent.append(displayAllTasks(makeToDo.arr));
-
-  // homeTask.append(displayAllTasks(makeToDo.arr));
 };
 
 const home = document.querySelector(".home");
@@ -46,6 +39,7 @@ const home = document.querySelector(".home");
 home.addEventListener("click", () => {
   homeTasks();
 });
+
 //project dom manip
 
 export const addProject = (project) => {
@@ -103,26 +97,15 @@ export const toggleProject = () => {
 };
 
 export const initialProjectLoad = () => {
-  const dropDown = document.querySelector(".dropDownItems");
-  const homeTask = document.querySelector(".taskTitle");
-
-  const test = document.createElement("div");
-
   removeProjects();
-
   addProject(createProject.projectArr);
   addOption();
   changeProject();
 };
 
-//
-
 //task dom manip
 const displayTasks = (task) => {
   const mainContent = document.querySelector(".mainContent");
-  // const heading = document.querySelector(".taskTitle");
-
-  //   heading.append(task);
 
   mainContent.append(task);
 };
@@ -139,12 +122,10 @@ export const clearContent = () => {
   const mainContent = document.querySelector(".mainContent");
 
   mainContent.innerHTML = "";
-  //need to figure out how to clear this without clearing the title as i am appending things to the title
 };
 
 export const strikeThrough = (e) => {
   const parentDiv = e.target.parentElement;
-  //   console.log(e.target.parentElement);
   const strikeTitle = parentDiv.querySelector(".title");
   const strikeDetail = parentDiv.querySelector(".details");
   const strikeDate = parentDiv.querySelector(".date");
@@ -198,7 +179,6 @@ export const removeStrike = (e) => {
 export const toggleEditForm = () => {
   const editForm = document.querySelector("#edit");
   editForm.classList.toggle("displayEdit");
-  console.log("hi");
 };
 
 export const makeTaskContainer = (title, detail, day, n) => {
