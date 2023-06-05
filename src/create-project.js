@@ -14,6 +14,7 @@ import displayTasks, {
   homeTasks,
   toggleEdit,
   initialProjectLoad,
+  initialLoad,
   // changeProject,
 } from "./dom-manipulation";
 
@@ -212,37 +213,26 @@ const showEmptyProject = (num) => {
 
   // mainContent.innerHTML = "";
 
+  // mainContent.append(heading, deleteProject);
   heading.textContent = "All Done? Create a new task or delete this project";
   deleteProject.textContent = "Remove Project";
 
   deleteProject.addEventListener("click", (e) => {
-    console.log(typeof num);
-
-    // if (typeof num === "string") {
-    //   deleteProject.dataset.num = parseInt(num);
-    // } else {
-    // }
-
     deleteProject.dataset.num = num;
 
-    const test = deleteProject.dataset.num;
-    console.log(test);
+    const projectNum = deleteProject.dataset.num;
+    // console.log(projectNum);
 
-    // console.log(createProject.projectArr.splice(test, 1));
-    createProject.projectArr.splice(test, 1);
-
-    // changeProject();
+    createProject.projectArr.splice(projectNum, 1);
 
     removeProjects();
     initialProjectLoad();
-    // console.log(createProject.projectArr);
-    // console.log(deleteProject.dataset.num);
-    // removeProjectItem(e);
+    clearContent();
+    homeTasks();
   });
 
   mainContent.append(deleteProject);
 
-  // console.log(mainContent);
   return mainContent;
 };
 
@@ -255,6 +245,7 @@ const showEmptyProject = (num) => {
 
 export const createProject = (() => {
   const project = document.querySelector("#getProject");
+  const mainContent = document.querySelector(".mainContent");
 
   let projectArr = [];
 
@@ -291,7 +282,10 @@ export const createProject = (() => {
 
     changeProject();
 
-    showEmptyProject(projectArr);
+    if (mainContent.childElementCount <= 1) {
+      showEmptyProject();
+    }
+
     console.log(projectArr);
 
     project.reset();
