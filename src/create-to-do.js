@@ -7,6 +7,7 @@ import displayTasks, {
   clearContent,
   makeTaskContainer,
   editLoad,
+  toggleEdit,
 } from "./dom-manipulation";
 
 import { saveLocale } from "./locale-storage";
@@ -50,8 +51,8 @@ export const editToDo = (arr) => {
     edit.addEventListener("click", (e) => {
       let num = e.target.dataset.number;
       const specificObject = arr[num];
-
       //   toggleEditForm(); turn this back on when nearing completetion
+      toggleEdit();
 
       editForm.addEventListener("submit", (e) => {
         e.preventDefault();

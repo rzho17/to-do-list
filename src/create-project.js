@@ -12,6 +12,8 @@ import displayTasks, {
   clearContent,
   removeProjects,
   homeTasks,
+  toggleEdit,
+  initialProjectLoad,
   // changeProject,
 } from "./dom-manipulation";
 
@@ -61,14 +63,14 @@ export const filterTasks = (taskTitle) => {
   return [];
 };
 
+// localStorage.clear();
+
 export const filterDays = () => {
   const today = new Date();
 
   makeToDo.arr.forEach((day, index) => {
     const replace = day.dueDate.replaceAll("-", "/");
-
     const test = new Date(replace);
-
     const result = isSameDay(test, today);
 
     if (result) {
@@ -90,30 +92,17 @@ export const filterWeek = () => {
 
   makeToDo.arr.forEach((day, index) => {
     const replace = day.dueDate.replaceAll("-", "/");
-
     const selectedDate = new Date(replace);
-
-    //need to change the time
-
     currentToday.setHours(0, 0, 0, 0);
-
-    // console.log(currentToday);
-
     const addWeek = addWeeks(currentToday, 1);
-
-    // console.log(addWeek);
-
     const withinWeek = isWithinInterval(selectedDate, {
       start: currentToday,
       end: addWeek,
     });
 
-    // const result = isSameDay(selectedDate, currentToday);
-
     if (withinWeek) {
       //need to be able to keep the data number on change to each respective item
       //so when they are being edited or changed they will still reflect on the original array
-      // console.log(index);
       displayTasks(
         makeTaskContainer(day.title, day.description, day.dueDate, index)
       );
@@ -147,14 +136,40 @@ export const changeProject = () => {
   heading.className = "taskTitle";
   heading.textContent = "Home";
 
+  const removeBtn = document.querySelector(".remove");
+
+  // const li = document.querySelector(".projectLi");
+
+  // projectLi.dataset.projectNum = n;
+
   projectLi.forEach((item) => {
     item.addEventListener("click", (e) => {
       mainContent.innerHTML = "";
       heading.textContent = e.target.textContent;
 
+      // console.log(e.target.dataset.projectNum);
+
+      // let x = parseInt(e.target.dataset.projectNum);
+      const x = Number(e.target.dataset.projectNum);
+
+      // console.log(x);
+      removeBtn.value = x;
+
+      // console.log(removeBtn.value);
+      // removeBtn.dataset.value = e.target.dataset.value;
+
+      // removeBtn.dataset.num = parseInt(x);
+      // removeBtn.dataset.test = 5;
       mainContent.append(heading);
 
       mainContent.append(filterTasks(e.target.textContent));
+
+      // console.log(mainContent.childElementCount);
+
+      if (mainContent.childElementCount <= 1) {
+        showEmptyProject(x);
+        // removeBtn.dataset.num = x;
+      }
     });
   });
 };
@@ -178,6 +193,65 @@ export const submitProject = (project) => {
 };
 
 changeProject();
+
+const removeProjectItem = (e) => {
+  // console.log(e.target.);
+  const listItem = document.querySelector(".projectLi");
+  const removeBtn = document.querySelector(".remove");
+
+  const li = document.querySelectorAll(".projectLi");
+};
+
+const showEmptyProject = (num) => {
+  const mainContent = document.querySelector(".mainContent");
+  // const heading = document.createElement("h2");
+  const heading = document.querySelector(".taskTitle");
+  heading.className = "taskTitle";
+  const deleteProject = document.createElement("button");
+  deleteProject.className = "remove";
+
+  // mainContent.innerHTML = "";
+
+  heading.textContent = "All Done? Create a new task or delete this project";
+  deleteProject.textContent = "Remove Project";
+
+  deleteProject.addEventListener("click", (e) => {
+    console.log(typeof num);
+
+    // if (typeof num === "string") {
+    //   deleteProject.dataset.num = parseInt(num);
+    // } else {
+    // }
+
+    deleteProject.dataset.num = num;
+
+    const test = deleteProject.dataset.num;
+    console.log(test);
+
+    // console.log(createProject.projectArr.splice(test, 1));
+    createProject.projectArr.splice(test, 1);
+
+    // changeProject();
+
+    removeProjects();
+    initialProjectLoad();
+    // console.log(createProject.projectArr);
+    // console.log(deleteProject.dataset.num);
+    // removeProjectItem(e);
+  });
+
+  mainContent.append(deleteProject);
+
+  // console.log(mainContent);
+  return mainContent;
+};
+
+// localStorage.clear();
+
+// on initial project creation it will be empty
+// so we will show the empty project screen with option to remove
+// when a task is added with the matching project, we will clear the project content and put the task and title
+// when all tasks are removed then the delete project screen reappears
 
 export const createProject = (() => {
   const project = document.querySelector("#getProject");
@@ -217,6 +291,9 @@ export const createProject = (() => {
 
     changeProject();
 
+    showEmptyProject(projectArr);
+    console.log(projectArr);
+
     project.reset();
   });
 
@@ -229,7 +306,6 @@ export const createProject = (() => {
 
 add.addEventListener("click", (e) => {
   toggleProject();
-
   // console.log("hi");
   // console.log(createProject.projectArr);
 });

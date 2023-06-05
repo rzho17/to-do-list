@@ -34,6 +34,13 @@ export const homeTasks = () => {
   mainContent.append(displayAllTasks(makeToDo.arr));
 };
 
+export const toggleEdit = () => {
+  const displayEdit = document.querySelector("#edit");
+  displayEdit.classList.toggle("displayEdit");
+
+  console.log("hi");
+};
+
 const home = document.querySelector(".home");
 
 home.addEventListener("click", () => {
@@ -44,10 +51,17 @@ home.addEventListener("click", () => {
 
 export const addProject = (project) => {
   const items = document.querySelector(".dropDownItems");
+  //   const removeBtn = document.querySelector(".remove");
+  let n = 0;
 
   project.forEach((item) => {
     const newLi = document.createElement("li");
     newLi.className = "projectLi";
+    newLi.dataset.projectNum = n;
+    console.log(n);
+    // removeBtn.dataset.projectNum = n;
+
+    n++;
 
     newLi.textContent = item.project;
 
