@@ -41,32 +41,30 @@ export const toggleEdit = () => {
   console.log("hi");
 };
 
-const home = document.querySelector(".home");
+const toggleHome = (() => {
+  const home = document.querySelector(".home");
 
-home.addEventListener("click", () => {
-  homeTasks();
-});
+  home.addEventListener("click", () => {
+    homeTasks();
+  });
+})();
 
 //project dom manip
 
 export const addProject = (project) => {
   const items = document.querySelector(".dropDownItems");
-  //   const removeBtn = document.querySelector(".remove");
   let n = 0;
 
   project.forEach((item) => {
     const newLi = document.createElement("li");
     newLi.className = "projectLi";
     newLi.dataset.projectNum = n;
-    console.log(n);
-    // removeBtn.dataset.projectNum = n;
 
     n++;
 
     newLi.textContent = item.project;
 
     items.append(newLi);
-    // console.log(newLi);
   });
 
   return items;
@@ -80,7 +78,6 @@ export const removeProjects = () => {
 export const toggleDropDown = () => {
   const items = document.querySelector(".dropDownItems");
 
-  //   items.classList.toggle("displayItems");
   items.classList.toggle("displayItems");
 };
 

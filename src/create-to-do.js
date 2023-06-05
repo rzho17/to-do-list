@@ -21,13 +21,7 @@ class ToDo {
     this.complete = complete;
     this.project = project;
   }
-
-  //   test() {
-  //     console.log("hi");
-  //   }
 }
-
-console.log(JSON.parse(localStorage.getItem("tasks")));
 
 export const removeItem = (arr) => {
   const removeTask = document.querySelectorAll(".remove");

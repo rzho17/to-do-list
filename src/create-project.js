@@ -26,12 +26,6 @@ class Project {
   }
 }
 
-// const demo = new Project("Do Dishes");
-
-const drop = document.querySelector(".displayDropDown");
-// const items = document.querySelector(".dropDownItems");
-const add = document.querySelector(".addProject");
-
 export const addOption = () => {
   const list = document.querySelectorAll(".projectLi");
 
@@ -48,11 +42,6 @@ export const addOption = () => {
 export const filterTasks = (taskTitle) => {
   makeToDo.arr.forEach((item, index) => {
     if (item.project === taskTitle) {
-      //need to be able to keep the data number on change to each respective item
-      //so when they are being edited or changed they will still reflect on the original array
-
-      // console.log(index);
-
       displayTasks(
         makeTaskContainer(item.title, item.description, item.dueDate, index)
       );
@@ -63,8 +52,6 @@ export const filterTasks = (taskTitle) => {
 
   return [];
 };
-
-// localStorage.clear();
 
 export const filterDays = () => {
   const today = new Date();
@@ -114,22 +101,6 @@ export const filterWeek = () => {
   return [];
 };
 
-const toggleWeek = document.querySelector(".week");
-
-toggleWeek.addEventListener("click", () => {
-  clearContent();
-
-  const mainContent = document.querySelector(".mainContent");
-  const todayTitle = document.createElement("h2");
-
-  todayTitle.textContent = "This Week";
-  todayTitle.classList = "taskTitle";
-
-  mainContent.append(todayTitle);
-
-  filterWeek();
-});
-
 export const changeProject = () => {
   const mainContent = document.querySelector(".mainContent");
   const projectLi = document.querySelectorAll(".projectLi");
@@ -139,37 +110,21 @@ export const changeProject = () => {
 
   const removeBtn = document.querySelector(".remove");
 
-  // const li = document.querySelector(".projectLi");
-
-  // projectLi.dataset.projectNum = n;
-
   projectLi.forEach((item) => {
     item.addEventListener("click", (e) => {
       mainContent.innerHTML = "";
       heading.textContent = e.target.textContent;
 
-      // console.log(e.target.dataset.projectNum);
+      const projectIndex = Number(e.target.dataset.projectNum);
 
-      // let x = parseInt(e.target.dataset.projectNum);
-      const x = Number(e.target.dataset.projectNum);
+      removeBtn.value = projectIndex;
 
-      // console.log(x);
-      removeBtn.value = x;
-
-      // console.log(removeBtn.value);
-      // removeBtn.dataset.value = e.target.dataset.value;
-
-      // removeBtn.dataset.num = parseInt(x);
-      // removeBtn.dataset.test = 5;
       mainContent.append(heading);
 
       mainContent.append(filterTasks(e.target.textContent));
 
-      // console.log(mainContent.childElementCount);
-
       if (mainContent.childElementCount <= 1) {
-        showEmptyProject(x);
-        // removeBtn.dataset.num = x;
+        showEmptyProject(projectIndex);
       }
     });
   });
@@ -195,25 +150,13 @@ export const submitProject = (project) => {
 
 changeProject();
 
-const removeProjectItem = (e) => {
-  // console.log(e.target.);
-  const listItem = document.querySelector(".projectLi");
-  const removeBtn = document.querySelector(".remove");
-
-  const li = document.querySelectorAll(".projectLi");
-};
-
 const showEmptyProject = (num) => {
   const mainContent = document.querySelector(".mainContent");
-  // const heading = document.createElement("h2");
   const heading = document.querySelector(".taskTitle");
   heading.className = "taskTitle";
   const deleteProject = document.createElement("button");
   deleteProject.className = "remove";
 
-  // mainContent.innerHTML = "";
-
-  // mainContent.append(heading, deleteProject);
   heading.textContent = "All Done? Create a new task or delete this project";
   deleteProject.textContent = "Remove Project";
 
@@ -221,7 +164,6 @@ const showEmptyProject = (num) => {
     deleteProject.dataset.num = num;
 
     const projectNum = deleteProject.dataset.num;
-    // console.log(projectNum);
 
     createProject.projectArr.splice(projectNum, 1);
 
@@ -235,13 +177,6 @@ const showEmptyProject = (num) => {
 
   return mainContent;
 };
-
-// localStorage.clear();
-
-// on initial project creation it will be empty
-// so we will show the empty project screen with option to remove
-// when a task is added with the matching project, we will clear the project content and put the task and title
-// when all tasks are removed then the delete project screen reappears
 
 export const createProject = (() => {
   const project = document.querySelector("#getProject");
@@ -258,11 +193,8 @@ export const createProject = (() => {
     projectArr = JSON.parse(localStorage.getItem("project"));
   }
 
-  // console.log(localStorage.getItem("project"));
-
   project.addEventListener("submit", (e) => {
     e.preventDefault();
-    // removeProjects();
 
     const formData = new FormData(project);
 
@@ -291,37 +223,55 @@ export const createProject = (() => {
     project.reset();
   });
 
-  // console.log(projectArr);
-  // console.log("yuo");
   return { projectArr };
 })();
 
-// localStorage.clear();
+const addToggle = (() => {
+  const add = document.querySelector(".addProject");
+  add.addEventListener("click", (e) => {
+    toggleProject();
+  });
+})();
 
-add.addEventListener("click", (e) => {
-  toggleProject();
-  // console.log("hi");
-  // console.log(createProject.projectArr);
-});
+const toggleDrop = (() => {
+  const drop = document.querySelector(".displayDropDown");
+  drop.addEventListener("click", () => {
+    toggleDropDown();
+  });
+})();
 
-const today = document.querySelector(".today");
+const toggleDays = (() => {
+  const today = document.querySelector(".today");
 
-today.addEventListener("click", () => {
-  clearContent();
+  today.addEventListener("click", () => {
+    clearContent();
 
-  const mainContent = document.querySelector(".mainContent");
-  const todayTitle = document.createElement("h2");
+    const mainContent = document.querySelector(".mainContent");
+    const todayTitle = document.createElement("h2");
 
-  todayTitle.textContent = "Today";
-  todayTitle.classList = "taskTitle";
+    todayTitle.textContent = "Today";
+    todayTitle.classList = "taskTitle";
 
-  mainContent.append(todayTitle);
+    mainContent.append(todayTitle);
 
-  filterDays();
-});
+    filterDays();
+  });
+})();
 
-drop.addEventListener("click", () => {
-  toggleDropDown();
-});
+const toggleWeeks = (() => {
+  const toggleWeek = document.querySelector(".week");
 
-// export default demo;
+  toggleWeek.addEventListener("click", () => {
+    clearContent();
+
+    const mainContent = document.querySelector(".mainContent");
+    const todayTitle = document.createElement("h2");
+
+    todayTitle.textContent = "This Week";
+    todayTitle.classList = "taskTitle";
+
+    mainContent.append(todayTitle);
+
+    filterWeek();
+  });
+})();
