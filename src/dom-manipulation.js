@@ -229,4 +229,43 @@ export const makeTaskContainer = (title, detail, day, n) => {
   return taskContainer;
 };
 
+//media query toggles
+
+const navToggle = (() => {
+  const navBtn = document.querySelector(".navBtn");
+  const navBar = document.querySelector("#navContainer");
+
+  navBtn.addEventListener("click", () => {
+    navBar.classList.toggle("nav");
+  });
+})();
+
+const addTask = (() => {
+  const taskBtn = document.querySelector(".taskBtn");
+  const addTask = document.querySelector("#addTaskForm");
+
+  taskBtn.addEventListener("click", () => {
+    addTask.classList.toggle("addTask");
+  });
+})();
+
+const closeTask = (() => {
+  const close = document.querySelector(".close");
+  const addTask = document.querySelector("#addTaskForm");
+  //   const form = document.querySelector('.add')
+
+  close.addEventListener("click", () => {
+    addTask.classList.toggle("addTask");
+  });
+})();
+
+const closeEditTask = (() => {
+  const close = document.querySelector(".closeEdit");
+  const editTask = document.querySelector("#edit");
+
+  close.addEventListener("click", () => {
+    editTask.classList.toggle("displayEdit");
+    console.log("hi");
+  });
+})();
 export default displayTasks;

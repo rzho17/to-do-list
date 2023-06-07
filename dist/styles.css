@@ -1,10 +1,119 @@
+* {
+  /* border: 1px solid green; */
+}
+
 body {
   min-height: 100vh;
   margin: 0;
   box-sizing: border-box;
 }
 
-.content {
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 1rem;
+  gap: 2rem;
+}
+
+/* nav css */
+.navBtn:hover {
+  cursor: pointer;
+}
+
+.nav {
+  display: none;
+  /* background-color: red; */
+  /* left: 140px; */
+}
+
+.navBackground {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+  background-color: red;
+  height: 90%;
+  width: 100%;
+
+  position: absolute;
+
+  /* top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+
+  margin: auto;
+}
+
+ul {
+  margin: 0;
+}
+
+.addTaskForm {
+  /* flex-direction: column-reverse; */
+  /* position: absolute; */
+  display: none;
+  /* border: 1px solid; */
+}
+
+legend {
+  /* height: fit-content; */
+  width: 100%;
+  font-size: 2rem;
+  background-color: red;
+
+  padding-top: 2rem;
+}
+
+.addTask,
+.editTask {
+  display: flex;
+  flex-direction: column;
+  border: 0;
+
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+
+  background-color: aliceblue;
+}
+
+.close {
+  width: fit-content;
+
+  align-self: flex-end;
+}
+
+label {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+input,
+select {
+  font-size: 1rem;
+}
+
+label,
+input,
+select {
+  padding: 1rem;
+
+  border-radius: 5px;
+}
+
+#project,
+#editProject {
+  margin-bottom: 1rem;
+}
+
+/* .content {
   min-height: 100vh;
   display: grid;
   grid-template-areas:
@@ -27,16 +136,13 @@ body {
   grid-area: nav;
   background-color: red;
   width: 300px;
-
-  /* min-height: 100vh; */
-  /* min-height: fit-content; */
 }
 
 .mainContent {
   grid-area: mn;
   background-color: grey;
   min-width: 100%;
-}
+} */
 
 .taskContainer {
   display: flex;

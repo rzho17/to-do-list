@@ -168,6 +168,7 @@ const showEmptyProject = (num) => {
     createProject.projectArr.splice(projectNum, 1);
 
     removeProjects();
+    saveProjects(createProject.projectArr);
     initialProjectLoad();
     clearContent();
     homeTasks();
