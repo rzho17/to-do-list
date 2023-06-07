@@ -265,7 +265,15 @@ const closeEditTask = (() => {
 
   close.addEventListener("click", () => {
     editTask.classList.toggle("displayEdit");
-    console.log("hi");
+  });
+})();
+
+const closeAddProject = (() => {
+  const close = document.querySelector(".closeProject");
+  const closeProject = document.querySelector("#getProject");
+
+  close.addEventListener("click", () => {
+    closeProject.classList.toggle("displayProject");
   });
 })();
 export default displayTasks;
