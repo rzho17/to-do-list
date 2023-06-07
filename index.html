@@ -20,17 +20,33 @@
 
       <nav class="nav" id="navContainer">
         <div class="navBackground">
-          <ul>
-            <li class="home">Home</li>
-            <li class="today">Today</li>
-            <li class="week">Week</li>
-            <li class="projects">Projects</li>
-            <button class="displayDropDown">dropdown</button>
-            <button class="addProject">Add</button>
+          <ul class="navUl">
+            <li class="home mainLi">Home</li>
+            <li class="today mainLi">Today</li>
+            <li class="week mainLi">Week</li>
+            <li class="projects mainLi displayDropDown">
+              Projects
+
+              <!-- <button class="displayDropDown">dropdown</button> -->
+              <button type="button" class="addProject">Add</button>
+            </li>
             <ul class="dropDownItems displayItems">
               <li class="projectLi">cheese</li>
             </ul>
           </ul>
+
+          <form action="" id="getProject" class="displayProject">
+            <fieldset class="projectForm">
+              <legend>New Project</legend>
+
+              <label for="newProject">Enter your new project</label>
+              <input type="text" name="newProject" id="newProject" required />
+
+              <input type="submit" class="projectSubmit" data-submit="submit" />
+              <button type="button" class="closeProject">Close</button>
+            </fieldset>
+          </form>
+
           <button class="taskBtn" id="taskBtn">+</button>
         </div>
 
@@ -132,19 +148,6 @@
             </select>
 
             <!-- <input type="button" value="close" /> -->
-            <input type="submit" data-submit="submit" />
-          </fieldset>
-        </form>
-
-        <form action="" id="getProject" class="displayProject">
-          <fieldset>
-            <legend>New Project</legend>
-
-            <button class="close">Close</button>
-
-            <label for="newProject"></label>
-            <input type="text" name="newProject" id="newProject" required />
-
             <input type="submit" data-submit="submit" />
           </fieldset>
         </form>

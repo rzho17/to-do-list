@@ -1,5 +1,6 @@
 * {
   /* border: 1px solid green; */
+  box-sizing: border-box;
 }
 
 body {
@@ -45,8 +46,56 @@ body {
   margin: auto;
 }
 
-ul {
-  margin: 0;
+.navUl {
+  font-size: 2rem;
+
+  list-style: none;
+}
+
+.mainLi {
+  width: 80%;
+  margin: 1rem 0;
+  padding: 0 0 0 1rem;
+
+  background-color: antiquewhite;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.projects {
+  display: flex;
+  justify-content: space-between;
+}
+
+.displayProject {
+  display: none;
+}
+
+.projectForm {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.projectLi {
+  /* list-style: none; */
+  margin: 0.5rem;
+  padding: 0 0 0 1rem;
+
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.taskBtn {
+  align-self: flex-end;
+
+  font-size: 4rem;
+
+  margin: 2rem;
+  width: 4rem;
 }
 
 .addTaskForm {
@@ -66,12 +115,16 @@ legend {
 }
 
 .addTask,
-.editTask {
+.editTask,
+.projectForm {
   display: flex;
   flex-direction: column;
   border: 0;
 
+  height: fit-content;
+
   height: 100%;
+  min-height: fit-content;
 
   position: absolute;
   top: 0;
@@ -82,6 +135,31 @@ legend {
   margin: auto;
 
   background-color: aliceblue;
+}
+
+.projectForm {
+  align-items: center;
+  /* justify-content: center; */
+  gap: 2rem;
+  height: 100%;
+  padding: 0;
+}
+
+.projectForm > legend {
+  background-color: aquamarine;
+  width: 100%;
+  padding: 1rem;
+}
+
+#newProject,
+.projectSubmit,
+.closeProject {
+  width: 80%;
+}
+
+input#newProject {
+  height: 2rem;
+  padding-left: 1rem;
 }
 
 .close {
@@ -161,9 +239,5 @@ select {
 }
 
 .displayEdit {
-  display: none;
-}
-
-.displayProject {
   display: none;
 }
