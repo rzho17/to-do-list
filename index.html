@@ -5,31 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>To Do List</title>
   </head>
   <body>
     <div class="content">
       <header class="header">
+        <i class="fa fa-bars navBtn"></i>
         <h1>To Do List</h1>
       </header>
-      <nav class="nav">
-        <ul>
-          <li class="home">Home</li>
-          <li class="today">Today</li>
-          <li class="week">Week</li>
-          <li class="projects">Projects</li>
-          <button class="displayDropDown">dropdown</button>
-          <button class="addProject">Add</button>
-          <ul class="dropDownItems displayItems">
-            <li class="projectLi">cheese</li>
-          </ul>
-        </ul>
 
-        <form action="">
-          <fieldset>
+      <nav class="nav" id="navContainer">
+        <div class="navBackground">
+          <ul>
+            <li class="home">Home</li>
+            <li class="today">Today</li>
+            <li class="week">Week</li>
+            <li class="projects">Projects</li>
+            <button class="displayDropDown">dropdown</button>
+            <button class="addProject">Add</button>
+            <ul class="dropDownItems displayItems">
+              <li class="projectLi">cheese</li>
+            </ul>
+          </ul>
+          <button class="taskBtn" id="taskBtn">+</button>
+        </div>
+
+        <form action="" class="addTaskForm" id="addTaskForm">
+          <fieldset class="addTask">
             <legend>Enter your task</legend>
 
-            <button class="close">X</button>
+            <button type="button" class="close">X</button>
 
             <label for="title">Title</label>
             <input
@@ -60,9 +69,9 @@
 
             <label for="priority">Priority</label>
             <select name="priority" id="priority" required>
-              <option value="low" selected>low</option>
-              <option value="medium">medium</option>
-              <option value="high">high</option>
+              <option value="low" selected>Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
             </select>
 
             <label for="project">Project</label>
@@ -71,16 +80,16 @@
               <option value="cheese">cheese</option>
             </select>
 
-            <input type="button" value="close" />
+            <!-- <input type="button" value="close" /> -->
             <input type="submit" data-submit="submit" />
           </fieldset>
         </form>
 
         <form action="" id="edit" class="displayEdit">
-          <fieldset>
+          <fieldset class="editTask">
             <legend>Edit your task</legend>
 
-            <button class="close">X</button>
+            <button type="button" class="close closeEdit">X</button>
 
             <label for="editTitle">Title</label>
             <input
@@ -111,9 +120,9 @@
 
             <label for="editPriority">Priority</label>
             <select name="editPriority" id="editPriority" required>
-              <option value="low" selected>low</option>
-              <option value="medium">medium</option>
-              <option value="high">high</option>
+              <option value="low" selected>Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
             </select>
 
             <label for="editProject">Project</label>
@@ -122,7 +131,7 @@
               <option value="cheese">cheese</option>
             </select>
 
-            <input type="button" value="close" />
+            <!-- <input type="button" value="close" /> -->
             <input type="submit" data-submit="submit" />
           </fieldset>
         </form>
