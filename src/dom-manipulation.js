@@ -251,6 +251,44 @@ const closeNav = (() => {
   });
 })();
 
+const openModal = () => {
+  const openProject = document.querySelector("#getProject");
+  const overlay = document.querySelector("#overlay");
+
+  openProject.classList.add("active");
+  overlay.classList.add("active");
+};
+
+const closeModal = () => {
+  const openProject = document.querySelector("#getProject");
+  const overlay = document.querySelector("#overlay");
+
+  openProject.classList.remove("active");
+  overlay.classList.remove("active");
+};
+
+const openAddProject = (() => {
+  const add = document.querySelector(".addProject");
+  add.addEventListener("click", () => {
+    openModal();
+  });
+})();
+
+const closeAddProject = (() => {
+  const close = document.querySelector(".closeProject");
+  close.addEventListener("click", () => {
+    closeModal();
+  });
+})();
+
+const closeOverlayProject = (() => {
+  const overlay = document.querySelector("#overlay");
+
+  overlay.addEventListener("click", () => {
+    closeModal();
+  });
+})();
+
 const addTask = (() => {
   const taskBtn = document.querySelector(".taskBtn");
   const addTask = document.querySelector("#addTaskForm");
@@ -279,12 +317,12 @@ const closeEditTask = (() => {
   });
 })();
 
-const closeAddProject = (() => {
-  const close = document.querySelector(".closeProject");
-  const closeProject = document.querySelector("#getProject");
+// const closeAddProject = (() => {
+//   const close = document.querySelector(".closeProject");
+//   const closeProject = document.querySelector("#getProject");
 
-  close.addEventListener("click", () => {
-    closeProject.classList.toggle("displayProject");
-  });
-})();
+//   close.addEventListener("click", () => {
+//     closeProject.classList.toggle("displayProject");
+//   });
+// })();
 export default displayTasks;

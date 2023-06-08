@@ -231,7 +231,7 @@ const addToggle = (() => {
   const add = document.querySelector(".addProject");
   add.addEventListener("click", (e) => {
     e.stopPropagation();
-    toggleProject();
+    // toggleProject();
   });
 })();
 

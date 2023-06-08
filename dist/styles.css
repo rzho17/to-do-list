@@ -8,6 +8,7 @@
 body {
   min-height: 100vh;
   margin: 0;
+  background-color: antiquewhite;
 }
 
 .header {
@@ -28,8 +29,8 @@ nav {
   height: 100%;
 
   position: fixed;
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  /* z-index: 1; */
+  top: 0;
   left: 0;
 
   overflow-x: hidden;
@@ -65,6 +66,38 @@ ul.dropDownItems {
 
 .nav {
   display: none;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+/* project forms */
+
+#getProject {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(0);
+
+  z-index: 10;
+}
+
+#getProject.active {
+  transform: translate(-50%, -50%) scale(1);
 }
 /* 
 
