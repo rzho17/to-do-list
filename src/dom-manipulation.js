@@ -207,7 +207,7 @@ export const makeTaskContainer = (title, detail, day, n) => {
   taskTitle.className = "title";
 
   const details = document.createElement("div");
-  details.textContent = detail;
+  details.textContent = "Details";
   details.className = "details";
 
   const date = document.createElement("div");
@@ -216,12 +216,12 @@ export const makeTaskContainer = (title, detail, day, n) => {
 
   const edit = document.createElement("button");
   edit.className = "editBtn";
-  edit.textContent = "edit";
+  edit.textContent = "E";
   edit.dataset.number = n;
 
   const remove = document.createElement("button");
   remove.className = "remove";
-  remove.textContent = "remove";
+  remove.textContent = "X";
   remove.dataset.number = n;
 
   taskContainer.append(checkBox, taskTitle, details, date, edit, remove);
@@ -237,6 +237,17 @@ const navToggle = (() => {
 
   navBtn.addEventListener("click", () => {
     navBar.classList.toggle("nav");
+    navBar.style.width = "100%";
+  });
+})();
+
+const closeNav = (() => {
+  const navBtn = document.querySelector(".closeNav");
+  const navBar = document.querySelector("#navContainer");
+
+  navBtn.addEventListener("click", () => {
+    navBar.classList.toggle("nav");
+    navBar.style.width = "0";
   });
 })();
 

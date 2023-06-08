@@ -143,7 +143,7 @@ export const taskFeatures = (arr) => {
 };
 
 const makeToDo = (() => {
-  const form = document.querySelector("form");
+  const form = document.querySelector("#addTaskForm");
   let arr = [];
 
   if (localStorage.length === 0) {
