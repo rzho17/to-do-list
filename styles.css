@@ -86,7 +86,9 @@ ul.dropDownItems {
 }
 /* project forms */
 
-#getProject {
+#getProject,
+#addTaskForm,
+#edit {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -96,8 +98,13 @@ ul.dropDownItems {
   z-index: 10;
 }
 
-#getProject.active {
+#getProject.active,
+#addTaskForm.active,
+#edit.active {
   transform: translate(-50%, -50%) scale(1);
+}
+
+#addTaskForm {
 }
 /* 
 
@@ -351,9 +358,9 @@ select {
 }
 
 .displayEdit {
-  display: none;
+  /* display: none; */
 }
 
 .addTask {
-  display: none;
+  /* display: none; */
 }
