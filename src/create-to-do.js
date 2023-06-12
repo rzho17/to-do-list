@@ -8,6 +8,7 @@ import displayTasks, {
   makeTaskContainer,
   editLoad,
   toggleEdit,
+  openModals,
 } from "./dom-manipulation";
 
 import { saveLocale } from "./locale-storage";
@@ -40,13 +41,15 @@ export const removeItem = (arr) => {
 export const editToDo = (arr) => {
   const editForm = document.querySelector("#edit");
   const editButton = document.querySelectorAll(".editBtn");
+  openModals();
 
   editButton.forEach((edit) => {
     edit.addEventListener("click", (e) => {
       let num = e.target.dataset.number;
       const specificObject = arr[num];
       //   toggleEditForm(); turn this back on when nearing completetion
-      toggleEdit();
+      //   toggleEdit();
+      openModals();
 
       editForm.addEventListener("submit", (e) => {
         e.preventDefault();

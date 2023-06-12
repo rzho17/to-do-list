@@ -27,19 +27,25 @@
           Projects
 
           <!-- <button class="displayDropDown">dropdown</button> -->
-          <button type="button" class="addProject">Add</button>
+          <button
+            type="button"
+            data-form-target="#getProject"
+            class="addProject"
+          >
+            Add
+          </button>
         </li>
         <ul class="dropDownItems displayItems">
           <li class="projectLi">cheese</li>
         </ul>
       </ul>
 
-      <div class="buttonNav">
+      <div class="buttonNav" data-form-target="#addTaskForm">
         <button class="taskBtn" id="taskBtn">+</button>
       </div>
     </nav>
 
-    <form action="" id="getProject" class="displayProject">
+    <form action="" id="getProject" class="modal displayProject">
       <fieldset class="projectForm">
         <legend>New Project</legend>
 
@@ -47,17 +53,19 @@
         <input type="text" name="newProject" id="newProject" required />
 
         <input type="submit" class="projectSubmit" data-submit="submit" />
-        <button type="button" class="closeProject">Close</button>
+        <button type="button" data-form-close class="closeProject">
+          Close
+        </button>
       </fieldset>
     </form>
 
     <div id="overlay"></div>
 
-    <form action="" class="addTaskForm addTask" id="addTaskForm">
+    <form action="" class="addTaskForm addTask modal" id="addTaskForm">
       <fieldset>
         <legend>Enter your task</legend>
 
-        <button type="button" class="close">X</button>
+        <button type="button" data-form-close class="close">X</button>
 
         <label for="title">Title</label>
         <input
@@ -98,11 +106,11 @@
       </fieldset>
     </form>
 
-    <form action="" id="edit" class="displayEdit">
+    <form action="" id="edit" class="displayEdit modal">
       <fieldset class="editTask">
         <legend>Edit your task</legend>
 
-        <button type="button" class="close closeEdit">X</button>
+        <button type="button" data-form-close class="close closeEdit">X</button>
 
         <label for="editTitle">Title</label>
         <input

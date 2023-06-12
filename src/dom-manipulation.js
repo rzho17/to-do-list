@@ -34,12 +34,12 @@ export const homeTasks = () => {
   mainContent.append(displayAllTasks(makeToDo.arr));
 };
 
-export const toggleEdit = () => {
-  const displayEdit = document.querySelector("#edit");
-  displayEdit.classList.toggle("displayEdit");
+// export const toggleEdit = () => {
+//   const displayEdit = document.querySelector("#edit");
+//   displayEdit.classList.toggle("displayEdit");
 
-  console.log("hi");
-};
+//   console.log("hi");
+// };
 
 const toggleHome = (() => {
   const home = document.querySelector(".home");
@@ -187,10 +187,10 @@ export const removeStrike = (e) => {
   strikeDate.classList.remove("toDoChecked");
 };
 
-export const toggleEditForm = () => {
-  const editForm = document.querySelector("#edit");
-  editForm.classList.toggle("displayEdit");
-};
+// export const toggleEditForm = () => {
+//   const editForm = document.querySelector("#edit");
+//   editForm.classList.toggle("displayEdit");
+// };
 
 export const makeTaskContainer = (title, detail, day, n) => {
   const taskContainer = document.createElement("div");
@@ -218,6 +218,7 @@ export const makeTaskContainer = (title, detail, day, n) => {
   edit.className = "editBtn";
   edit.textContent = "E";
   edit.dataset.number = n;
+  edit.dataset.formTarget = "#edit";
 
   const remove = document.createElement("button");
   remove.className = "remove";
@@ -251,33 +252,63 @@ const closeNav = (() => {
   });
 })();
 
-const openModal = () => {
-  const openProject = document.querySelector("#getProject");
-  const overlay = document.querySelector("#overlay");
+const openModal = (modal) => {
+  //   const openProject = document.querySelector("#getProject");
 
-  openProject.classList.add("active");
+  const overlay = document.querySelector("#overlay");
+  //   openProject.classList.add("active");
+  if (modal === undefined) return;
+  modal.classList.add("active");
   overlay.classList.add("active");
 };
 
-const closeModal = () => {
-  const openProject = document.querySelector("#getProject");
+const closeModal = (modal) => {
   const overlay = document.querySelector("#overlay");
 
-  openProject.classList.remove("active");
+  if (modal === undefined) return;
+  modal.classList.remove("active");
   overlay.classList.remove("active");
 };
 
-const openAddProject = (() => {
-  const add = document.querySelector(".addProject");
-  add.addEventListener("click", () => {
-    openModal();
+const openModalBtns = (() => {
+  const openProject = document.querySelectorAll("[data-form-target]");
+
+  openProject.forEach((button) => {
+    button.addEventListener("click", () => {
+      const modal = document.querySelector(button.dataset.formTarget);
+      openModal(modal);
+    });
   });
 })();
+const openProject = document.querySelectorAll("[data-form-target]");
 
-const closeAddProject = (() => {
-  const close = document.querySelector(".closeProject");
-  close.addEventListener("click", () => {
-    closeModal();
+openProject.forEach((button) => {
+  button.addEventListener("click", () => {
+    const modal = document.querySelector(button.dataset.formTarget);
+    console.log(modal);
+    openModal(modal);
+  });
+});
+export const openModals = () => {
+  const openProject = document.querySelectorAll("[data-form-target]");
+
+  openProject.forEach((button) => {
+    button.addEventListener("click", () => {
+      const modal = document.querySelector(button.dataset.formTarget);
+      openModal(modal);
+    });
+  });
+};
+
+const closeModalBtns = (() => {
+  const closeModalBtn = document.querySelectorAll("[data-form-close]");
+
+  closeModalBtn.forEach((button) => {
+    button.addEventListener("click", () => {
+      const modal = button.closest(".modal");
+      //   console.log(modal);
+      closeModal(modal);
+    });
   });
 })();
 
@@ -285,7 +316,11 @@ const closeOverlayProject = (() => {
   const overlay = document.querySelector("#overlay");
 
   overlay.addEventListener("click", () => {
-    closeModal();
+    const modals = document.querySelectorAll(".modal.active");
+
+    modals.forEach((modal) => {
+      closeModal(modal);
+    });
   });
 })();
 
@@ -293,29 +328,29 @@ const addTask = (() => {
   const taskBtn = document.querySelector(".taskBtn");
   const addTask = document.querySelector("#addTaskForm");
 
-  taskBtn.addEventListener("click", () => {
-    addTask.classList.toggle("addTask");
-  });
+  //   taskBtn.addEventListener("click", () => {
+  //     addTask.classList.toggle("addTask");
+  //   });
 })();
 
-const closeTask = (() => {
-  const close = document.querySelector(".close");
-  const addTask = document.querySelector("#addTaskForm");
-  //   const form = document.querySelector('.add')
+// const closeTask = (() => {
+//   const close = document.querySelector(".close");
+//   const addTask = document.querySelector("#addTaskForm");
+//   //   const form = document.querySelector('.add')
 
-  close.addEventListener("click", () => {
-    addTask.classList.toggle("addTask");
-  });
-})();
+//   close.addEventListener("click", () => {
+//     addTask.classList.toggle("addTask");
+//   });
+// })();
 
-const closeEditTask = (() => {
-  const close = document.querySelector(".closeEdit");
-  const editTask = document.querySelector("#edit");
+// const closeEditTask = (() => {
+//   const close = document.querySelector(".closeEdit");
+//   const editTask = document.querySelector("#edit");
 
-  close.addEventListener("click", () => {
-    editTask.classList.toggle("displayEdit");
-  });
-})();
+//   close.addEventListener("click", () => {
+//     editTask.classList.toggle("displayEdit");
+//   });
+// })();
 
 // const closeAddProject = (() => {
 //   const close = document.querySelector(".closeProject");
