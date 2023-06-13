@@ -62,10 +62,8 @@
     <div id="overlay"></div>
 
     <form action="" class="addTaskForm addTask modal" id="addTaskForm">
-      <fieldset>
+      <fieldset class="taskForm">
         <legend>Enter your task</legend>
-
-        <button type="button" data-form-close class="close">X</button>
 
         <label for="title">Title</label>
         <input
@@ -103,14 +101,13 @@
 
         <!-- <input type="button" value="close" /> -->
         <input type="submit" data-submit="submit" />
+        <button type="button" data-form-close class="close">X</button>
       </fieldset>
     </form>
 
     <form action="" id="edit" class="displayEdit modal">
       <fieldset class="editTask">
         <legend>Edit your task</legend>
-
-        <button type="button" data-form-close class="close closeEdit">X</button>
 
         <label for="editTitle">Title</label>
         <input
@@ -154,6 +151,7 @@
 
         <!-- <input type="button" value="close" /> -->
         <input type="submit" data-submit="submit" />
+        <button type="button" data-form-close class="close closeEdit">X</button>
       </fieldset>
     </form>
     <main>

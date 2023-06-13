@@ -104,219 +104,123 @@ ul.dropDownItems {
   transform: translate(-50%, -50%) scale(1);
 }
 
-#addTaskForm {
-}
-/* 
+/* Modal styling */
 
-.navBackground {
-  display: flex;
-  flex-direction: column;
-
-  justify-content: space-between;
-  background-color: antiquewhite;
-
-  min-height: 90%;
-  width: 100%;
-
-  position: absolute;
-
-  margin: auto;
+/* project Modal */
+fieldset {
+  border: none;
 }
 
-.navUl {
-  font-size: 2rem;
-
-  list-style: none;
-}
-
-.mainLi {
-  display: flex;
-  align-items: center;
-  width: 80%;
-  margin: 1rem 0;
-  padding: 0 0 0 1rem;
-
-  background-color: antiquewhite;
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
-.projects {
-  display: flex;
-  justify-content: space-between;
-}
-
-.displayProject {
-  display: none;
+#getProject.modal {
+  height: 50vh;
+  width: 80vw;
+  background-color: white;
 }
 
 .projectForm {
-  position: absolute;
-
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-.projectLi {
-  margin: 0.5rem;
-  padding: 0 0 0 1rem;
-
-  width: 75%;
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
-.addProject {
-  padding: 1rem;
-  margin: 1rem;
-}
-
-.taskBtn {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+
   justify-content: center;
-  align-self: flex-end;
+  gap: 1rem;
+  height: 100%;
 
-  font-size: 4rem;
-
-  margin: 2rem;
-  height: 4rem;
-  width: 4rem;
-  padding: 0;
-
-  border-radius: 50%;
-}
-
-.addTaskForm {
-  display: none;
+  border-radius: 5px;
 }
 
 legend {
-  width: 100%;
-  font-size: 2rem;
-  background-color: red;
-
+  font-size: 1.5rem;
   padding-top: 2rem;
-}
-
-.addTask,
-.editTask,
-.projectForm {
-  display: flex;
-  flex-direction: column;
-  border: 0;
-
-  height: fit-content;
-
-  height: 100%;
-  min-height: fit-content;
-  padding: 0;
-
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  margin: auto;
-
-  background-color: aliceblue;
-}
-
-.projectForm {
-  align-items: center;
-  gap: 2rem;
-  height: 100%;
-  padding: 0;
-}
-
-.projectForm > legend {
-  background-color: aquamarine;
   width: 100%;
-  padding: 1rem;
+}
+
+label {
+  font-size: 1.25rem;
 }
 
 #newProject,
 .projectSubmit,
-.closeProject {
-  width: 80%;
+.closeProject,
+#title,
+#description,
+#date,
+#priority,
+#project,
+#editTitle,
+#editDescription,
+#editDate,
+#editPriority,
+#editProject {
+  height: 2.5rem;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
 }
 
-input#newProject {
-  height: 2rem;
+#newProject,
+#title,
+#description,
+#date,
+#priority,
+#project,
+#editTitle,
+#editDescription,
+#editDate,
+#editPriority,
+#editProject {
+  background-color: aliceblue;
+  font-size: 1.5rem;
   padding-left: 1rem;
 }
 
-.close {
-  width: fit-content;
-
-  align-self: flex-end;
+.projectSubmit,
+.taskForm input,
+.editTask input {
+  font-size: 1.25rem;
+  border: none;
 }
 
-.content {
+.closeProject,
+.taskForm .close,
+.editTask .close {
+  height: 1.5rem;
+  border: none;
+}
+
+.projectSubmit:hover,
+.closeProject:hover {
+  cursor: pointer;
+}
+
+/* task modals */
+
+#addTaskForm.modal,
+#edit.modal {
+  width: 80vw;
+
+  background-color: white;
+}
+
+.taskForm,
+.editTask {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+
+  justify-content: center;
+
+  gap: 1rem;
+  height: 100%;
 }
 
-.mainContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: aquamarine;
-
-  flex: 1;
-}
-
-.taskContainer {
-  display: flex;
-
-  align-items: center;
-
-  border: 1px solid;
-
-  padding: 1rem;
-
-  margin: 0 0 1rem;
-}
-
-.complete,
-.title,
-.details,
-.date,
-.editBtn,
-.remove {
-  margin-right: 2rem;
-}
-
-.title {
-}
-.date {
-  white-space: nowrap;
-}
-label {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-input,
-select {
-  font-size: 1rem;
-}
-
-label,
-input,
-select {
-  padding: 1rem;
-
-  border-radius: 5px;
-}
-
-#project,
-#editProject {
+.taskForm legend,
+.editTask legend {
   margin-bottom: 1rem;
-} */
+}
+
+.taskForm input,
+.editTask input {
+  height: 2.5rem;
+}
 
 /* .content {
   min-height: 100vh;
