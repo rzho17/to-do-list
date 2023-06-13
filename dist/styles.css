@@ -21,11 +21,13 @@ body {
   cursor: pointer;
 }
 
+/* nav styles */
+
 nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: red;
+  background-color: white;
   height: 100%;
 
   position: fixed;
@@ -43,9 +45,52 @@ nav {
   gap: 1rem;
 }
 
+.navUl li {
+  font-size: 2rem;
+  list-style: none;
+}
+
 ul.dropDownItems {
   margin: 0;
   padding: 0;
+}
+
+.dropDownItems li {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+}
+
+.projects {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 50vw;
+}
+
+.navUl li:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.addProject {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  font-size: 2rem;
+
+  margin-left: 1rem;
+
+  border: none;
+  border-radius: 5px;
+
+  background-color: aliceblue;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .closeNav {
@@ -56,17 +101,31 @@ ul.dropDownItems {
   margin-left: 50px;
 }
 
+.closeNav:hover {
+  cursor: pointer;
+}
+
 .buttonNav {
   align-self: flex-end;
   margin: 2rem;
 }
 
 .taskBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  font-size: 4rem;
+
+  border: none;
+  border-radius: 5px;
+  background-color: aliceblue;
 }
 
-.nav {
+/* .nav {
   display: none;
-}
+} */
 
 #overlay {
   position: fixed;
@@ -220,6 +279,85 @@ label {
 .taskForm input,
 .editTask input {
   height: 2.5rem;
+}
+
+/* task styles */
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2rem;
+  padding: 2rem 0;
+}
+.taskContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  width: 95vw;
+  max-width: 100%;
+
+  /* gap: 1rem; */
+  padding: 1.5rem 0;
+  border: 1px solid;
+  border-radius: 5px;
+
+  background-color: aliceblue;
+}
+
+.complete,
+.details {
+  margin: 0 1rem 0 0;
+}
+
+.taskContainer .title {
+  /* margin-right: 2rem; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 1rem;
+  gap: 1rem;
+  max-width: 5rem;
+}
+
+.details {
+  padding: 0.5rem;
+  border: 3px solid;
+  border-radius: 5px;
+}
+
+.details:hover {
+  cursor: pointer;
+}
+.buttonBox {
+  display: flex;
+  gap: 1rem;
+}
+
+#detailInfo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(0);
+
+  z-index: 10;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 80vw;
+  height: 40vh;
+}
+
+#detailInfo.active {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* .content {

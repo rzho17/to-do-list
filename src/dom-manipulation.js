@@ -209,10 +209,14 @@ export const makeTaskContainer = (title, detail, day, n) => {
   const details = document.createElement("div");
   details.textContent = "Details";
   details.className = "details";
+  details.dataset.formTarget = "#detailInfo";
 
   const date = document.createElement("div");
   date.textContent = day;
   date.className = "date";
+
+  const buttonBox = document.createElement("div");
+  buttonBox.className = "buttonBox";
 
   const edit = document.createElement("button");
   edit.className = "editBtn";
@@ -225,7 +229,10 @@ export const makeTaskContainer = (title, detail, day, n) => {
   remove.textContent = "X";
   remove.dataset.number = n;
 
-  taskContainer.append(checkBox, taskTitle, details, date, edit, remove);
+  buttonBox.append(edit, remove);
+
+  taskContainer.append(checkBox, taskTitle, details, buttonBox);
+  taskTitle.append(date);
 
   return taskContainer;
 };
@@ -324,14 +331,30 @@ const closeOverlayProject = (() => {
   });
 })();
 
-const addTask = (() => {
-  const taskBtn = document.querySelector(".taskBtn");
-  const addTask = document.querySelector("#addTaskForm");
+export const displayDetails = (arr) => {
+  const details = document.querySelectorAll(".details");
+  const detailBox = document.querySelector("#detailInfo");
 
-  //   taskBtn.addEventListener("click", () => {
-  //     addTask.classList.toggle("addTask");
-  //   });
-})();
+  details.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const parent = button.parentNode;
+      const indexNumber = parent.dataset.number;
+
+      detailBox.textContent = "";
+
+      console.log(indexNumber);
+
+      const currentValues = Object.values(arr[indexNumber]);
+
+      currentValues.forEach((item) => {
+        // console.log(item);
+        detailBox.append(item);
+      });
+
+      //   arr[indexNumber]
+    });
+  });
+};
 
 // const closeTask = (() => {
 //   const close = document.querySelector(".close");

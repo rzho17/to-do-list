@@ -15,6 +15,7 @@ import displayTasks, {
   toggleEdit,
   initialProjectLoad,
   initialLoad,
+  displayDetails,
   // changeProject,
 } from "./dom-manipulation";
 

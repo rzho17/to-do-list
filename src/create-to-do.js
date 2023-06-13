@@ -9,6 +9,7 @@ import displayTasks, {
   editLoad,
   toggleEdit,
   openModals,
+  displayDetails,
 } from "./dom-manipulation";
 
 import { saveLocale } from "./locale-storage";
@@ -134,6 +135,7 @@ export const displayAllTasks = (arr) => {
   setCompletion(arr);
   displayCompletion(arr);
   saveLocale(arr);
+  displayDetails(arr);
 
   return [];
 };
@@ -143,6 +145,7 @@ export const taskFeatures = (arr) => {
   editToDo(arr);
   setCompletion(arr);
   displayCompletion(arr);
+  displayDetails(arr);
 };
 
 const makeToDo = (() => {
