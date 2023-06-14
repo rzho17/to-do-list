@@ -16,6 +16,9 @@ import displayTasks, {
   initialProjectLoad,
   initialLoad,
   displayDetails,
+  closeModals,
+  closeProjectModal,
+  closeModal,
   // changeProject,
 } from "./dom-manipulation";
 
@@ -153,10 +156,12 @@ changeProject();
 
 const showEmptyProject = (num) => {
   const mainContent = document.querySelector(".mainContent");
+  // const heading = document.querySelector(".taskTitle");
   const heading = document.querySelector(".taskTitle");
   heading.className = "taskTitle";
+  heading.style.marginTop = "12rem";
   const deleteProject = document.createElement("button");
-  deleteProject.className = "remove";
+  deleteProject.className = "removeProject";
 
   heading.textContent = "All Done? Create a new task or delete this project";
   deleteProject.textContent = "Remove Project";
@@ -223,6 +228,9 @@ export const createProject = (() => {
     console.log(projectArr);
 
     project.reset();
+    // closeModal(project);
+    closeModal(project);
+    // closeModal();
   });
 
   return { projectArr };

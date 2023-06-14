@@ -10,6 +10,8 @@ import displayTasks, {
   toggleEdit,
   openModals,
   displayDetails,
+  closeModals,
+  closeModal,
 } from "./dom-manipulation";
 
 import { saveLocale } from "./locale-storage";
@@ -84,6 +86,8 @@ export const editToDo = (arr) => {
         }
 
         num = "";
+
+        closeModal(editForm);
       });
     });
   });
@@ -184,6 +188,12 @@ const makeToDo = (() => {
     initialLoad();
     displayAllTasks(arr);
     submitProject(project);
+    form.reset();
+
+    // closeModals();
+    closeModal(form);
+
+    // closeModal();
     // changeProject(project);
     // console.log(project);
   });

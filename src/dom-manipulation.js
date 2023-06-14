@@ -273,7 +273,7 @@ const openModal = (modal) => {
   overlay.classList.add("active");
 };
 
-const closeModal = (modal) => {
+export const closeModal = (modal) => {
   const overlay = document.querySelector("#overlay");
 
   if (modal === undefined) return;
@@ -291,6 +291,7 @@ const openModalBtns = (() => {
     });
   });
 })();
+
 const openProject = document.querySelectorAll("[data-form-target]");
 
 openProject.forEach((button) => {
@@ -300,6 +301,7 @@ openProject.forEach((button) => {
     openModal(modal);
   });
 });
+
 export const openModals = () => {
   const openProject = document.querySelectorAll("[data-form-target]");
 
