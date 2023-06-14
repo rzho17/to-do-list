@@ -167,6 +167,9 @@ button:hover {
 
 /* Modal styling */
 
+.modal {
+  border-radius: 5px;
+}
 /* project Modal */
 fieldset {
   border: none;
@@ -244,7 +247,8 @@ label {
 .closeProject,
 .taskForm .close,
 .editTask .close,
-.close {
+.close,
+.detail .close {
   height: 1.5rem;
   border: none;
 }
@@ -289,11 +293,24 @@ label {
 .mainContent {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 
   gap: 2rem;
   padding: 2rem 0;
+
+  text-align: center;
 }
+
+.mainContent .emptyTaskTitle {
+  font-size: 2rem;
+  margin-top: 10rem;
+}
+
+.mainContent .removeProject {
+  font-size: 2rem;
+}
+
 .taskContainer {
   display: flex;
   justify-content: space-between;
@@ -403,13 +420,20 @@ label {
   font-size: 1.2rem;
 }
 
-.close {
+.detailInfo .close {
   align-self: flex-end;
   margin: 1rem;
   height: auto;
   font-size: 1.5rem;
   border-radius: 5px;
 }
+
+.removeProject {
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+}
+
 /* .content {
   min-height: 100vh;
   display: grid;
