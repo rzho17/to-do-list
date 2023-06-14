@@ -35,6 +35,8 @@ nav {
   top: 0;
   left: 0;
 
+  width: 0;
+  /* will change whether the nav will be shown or not */
   overflow-x: hidden;
   padding-top: 60px;
 }
@@ -241,7 +243,8 @@ label {
 
 .closeProject,
 .taskForm .close,
-.editTask .close {
+.editTask .close,
+.close {
   height: 1.5rem;
   border: none;
 }
@@ -293,14 +296,14 @@ label {
 }
 .taskContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 
   width: 95vw;
   max-width: 100%;
 
   /* gap: 1rem; */
-  padding: 1.5rem 0;
+  padding: 1.5rem 2rem;
   border: 1px solid;
   border-radius: 5px;
 
@@ -309,7 +312,15 @@ label {
 
 .complete,
 .details {
-  margin: 0 1rem 0 0;
+  /* margin: 0 1rem 0 0; */
+}
+
+.checkAndTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
 }
 
 .taskContainer .title {
@@ -336,7 +347,7 @@ label {
 }
 .buttonBox {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 #detailInfo {
@@ -349,17 +360,56 @@ label {
   z-index: 10;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: white;
   width: 80vw;
-  height: 40vh;
+
+  max-width: 400px;
+  min-height: 40vh;
+
+  border-radius: 5px;
+  padding: 2rem;
 }
 
 #detailInfo.active {
   transform: translate(-50%, -50%) scale(1);
 }
 
+.newKey {
+  display: flex;
+  /* font-size: 2rem; */
+
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 90%;
+
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.keyValue {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.itemValue {
+  display: flex;
+  justify-content: flex-end;
+  align-self: flex-end;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.close {
+  align-self: flex-end;
+  margin: 1rem;
+  height: auto;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
 /* .content {
   min-height: 100vh;
   display: grid;

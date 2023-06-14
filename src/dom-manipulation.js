@@ -197,6 +197,9 @@ export const makeTaskContainer = (title, detail, day, n) => {
   taskContainer.setAttribute("class", "taskContainer");
   taskContainer.dataset.number = n;
 
+  const checkAndTitle = document.createElement("div");
+  checkAndTitle.className = "checkAndTitle";
+
   const checkBox = document.createElement("input");
   checkBox.setAttribute("type", "checkbox");
   checkBox.className = "complete";
@@ -229,9 +232,10 @@ export const makeTaskContainer = (title, detail, day, n) => {
   remove.textContent = "X";
   remove.dataset.number = n;
 
-  buttonBox.append(edit, remove);
+  checkAndTitle.append(checkBox, taskTitle);
+  buttonBox.append(details, edit, remove);
 
-  taskContainer.append(checkBox, taskTitle, details, buttonBox);
+  taskContainer.append(checkAndTitle, buttonBox);
   taskTitle.append(date);
 
   return taskContainer;
@@ -307,6 +311,17 @@ export const openModals = () => {
   });
 };
 
+export const closeModals = () => {
+  const closeDetails = document.querySelectorAll("[data-form-close]");
+
+  closeDetails.forEach((button) => {
+    button.addEventListener("click", () => {
+      const modal = button.closest(".modal");
+      closeModal(modal);
+    });
+  });
+};
+
 const closeModalBtns = (() => {
   const closeModalBtn = document.querySelectorAll("[data-form-close]");
 
@@ -337,50 +352,48 @@ export const displayDetails = (arr) => {
 
   details.forEach((button) => {
     button.addEventListener("click", (e) => {
-      const parent = button.parentNode;
+      const parent = button.parentNode.parentNode;
       const indexNumber = parent.dataset.number;
+      const closeBtn = document.createElement("button");
 
       detailBox.textContent = "";
 
-      console.log(indexNumber);
+      closeBtn.textContent = "X";
+      closeBtn.className = "close";
+      closeBtn.type = "button";
+      closeBtn.dataset.formClose = "";
+
+      detailBox.append(closeBtn);
+
+      closeModals();
 
       const currentValues = Object.values(arr[indexNumber]);
+      const currentKey = Object.keys(arr[indexNumber]);
 
-      currentValues.forEach((item) => {
-        // console.log(item);
-        detailBox.append(item);
+      currentKey.forEach((key) => {
+        const newKey = document.createElement("div");
+        newKey.className = "newKey";
+
+        const keyValue = document.createElement("div");
+        keyValue.className = "keyValue";
+
+        keyValue.textContent =
+          key.charAt(0).toUpperCase() + key.substring(1) + ":";
+
+        newKey.append(keyValue);
+        detailBox.append(newKey);
       });
 
-      //   arr[indexNumber]
+      const appendItem = document.querySelectorAll(".newKey");
+      appendItem.forEach((item, index) => {
+        const itemValue = document.createElement("div");
+        itemValue.className = "itemValue";
+
+        itemValue.textContent = currentValues[index];
+        item.append(itemValue);
+      });
     });
   });
 };
 
-// const closeTask = (() => {
-//   const close = document.querySelector(".close");
-//   const addTask = document.querySelector("#addTaskForm");
-//   //   const form = document.querySelector('.add')
-
-//   close.addEventListener("click", () => {
-//     addTask.classList.toggle("addTask");
-//   });
-// })();
-
-// const closeEditTask = (() => {
-//   const close = document.querySelector(".closeEdit");
-//   const editTask = document.querySelector("#edit");
-
-//   close.addEventListener("click", () => {
-//     editTask.classList.toggle("displayEdit");
-//   });
-// })();
-
-// const closeAddProject = (() => {
-//   const close = document.querySelector(".closeProject");
-//   const closeProject = document.querySelector("#getProject");
-
-//   close.addEventListener("click", () => {
-//     closeProject.classList.toggle("displayProject");
-//   });
-// })();
 export default displayTasks;
