@@ -13,7 +13,7 @@
   </head>
   <body>
     <header class="header">
-      <i class="fa fa-bars navBtn"></i>
+      <div><i class="fa fa-bars navBtn"></i></div>
       <h1>To Do List</h1>
     </header>
 
@@ -46,10 +46,11 @@
     </nav>
 
     <form action="" id="getProject" class="modal displayProject">
+      <div class="formTitle">New Project</div>
       <fieldset class="projectForm">
-        <legend>New Project</legend>
+        <legend>Enter Your Project</legend>
 
-        <label for="newProject">Enter your new project</label>
+        <label for="newProject">Project</label>
         <input type="text" name="newProject" id="newProject" required />
 
         <input type="submit" class="projectSubmit" data-submit="submit" />
@@ -63,8 +64,9 @@
     <div id="overlay"></div>
 
     <form action="" class="addTaskForm addTask modal" id="addTaskForm">
+      <div class="formTitle">Enter your task</div>
       <fieldset class="taskForm">
-        <legend>Enter your task</legend>
+        <legend>Task Info</legend>
 
         <label for="title">Title</label>
         <input
@@ -101,14 +103,16 @@
         </select>
 
         <!-- <input type="button" value="close" /> -->
-        <input type="submit" data-submit="submit" />
+        <input type="submit" class="submit" data-submit="submit" />
         <button type="button" data-form-close class="close">X</button>
       </fieldset>
     </form>
 
     <form action="" id="edit" class="displayEdit modal">
+      <div class="formTitle">Edit your task</div>
+
       <fieldset class="editTask">
-        <legend>Edit your task</legend>
+        <legend>Task Info</legend>
 
         <label for="editTitle">Title</label>
         <input
@@ -151,7 +155,7 @@
         </select>
 
         <!-- <input type="button" value="close" /> -->
-        <input type="submit" data-submit="submit" />
+        <input type="submit" class="submit" data-submit="submit" />
         <button type="button" data-form-close class="close closeEdit">X</button>
       </fieldset>
     </form>
