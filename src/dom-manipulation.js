@@ -46,6 +46,7 @@ const toggleHome = (() => {
 
   home.addEventListener("click", () => {
     homeTasks();
+    closeNavFunc();
   });
 })();
 
@@ -136,14 +137,15 @@ export const clearContent = () => {
 };
 
 export const strikeThrough = (e) => {
-  const parentDiv = e.target.parentElement;
+  const parentDiv = e.target.parentElement.parentElement;
+  console.log(parentDiv);
   const strikeTitle = parentDiv.querySelector(".title");
   const strikeDetail = parentDiv.querySelector(".details");
   const strikeDate = parentDiv.querySelector(".date");
 
   strikeTitle.classList.toggle("toDoChecked");
-  strikeDetail.classList.toggle("toDoChecked");
-  strikeDate.classList.toggle("toDoChecked");
+  //   strikeDetail.classList.toggle("toDoChecked");
+  //   strikeDate.classList.toggle("toDoChecked");
 };
 
 export const testStrike = (dataValue) => {
@@ -171,8 +173,8 @@ export const testStrike = (dataValue) => {
     checkBox.checked = true;
 
     strikeTitle.classList.toggle("toDoChecked");
-    strikeDetail.classList.toggle("toDoChecked");
-    strikeDate.classList.toggle("toDoChecked");
+    // strikeDetail.classList.toggle("toDoChecked");
+    // strikeDate.classList.toggle("toDoChecked");
   }
 };
 
@@ -183,8 +185,10 @@ export const removeStrike = (e) => {
   const strikeDate = parentDiv.querySelector(".date");
 
   strikeTitle.classList.remove("toDoChecked");
-  strikeDetail.classList.remove("toDoChecked");
-  strikeDate.classList.remove("toDoChecked");
+
+  //   commented these out because I moved them into the same div and they aren't needed now
+  //   strikeDetail.classList.remove("toDoChecked");
+  //   strikeDate.classList.remove("toDoChecked");
 };
 
 // export const toggleEditForm = () => {
@@ -262,6 +266,16 @@ const closeNav = (() => {
     navBar.style.width = "0";
   });
 })();
+
+export const closeNavFunc = () => {
+  const navBtn = document.querySelector(".closeNav");
+  const navBar = document.querySelector("#navContainer");
+
+  //   navBtn.addEventListener("click", () => {
+  navBar.classList.toggle("nav");
+  navBar.style.width = "0";
+  //   });
+};
 
 const openModal = (modal) => {
   //   const openProject = document.querySelector("#getProject");

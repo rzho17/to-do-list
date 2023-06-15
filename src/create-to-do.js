@@ -100,6 +100,8 @@ export const setCompletion = (arr) => {
     box.addEventListener("click", (e) => {
       const dataIndex = e.target.dataset.number;
 
+      console.log(dataIndex);
+      console.log(arr[dataIndex]);
       if (arr[dataIndex].complete === false) {
         arr[dataIndex].complete = true;
         strikeThrough(e);

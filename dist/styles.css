@@ -1,3 +1,12 @@
+:root {
+  --white: #ffffff;
+  --light: #faf7f0;
+  --gray: #f0ecec;
+  --lightBlue: #cdfcf6;
+  --lightPurple: #bccef8;
+  --mediumPurple: #98a8f8;
+}
+
 * {
   /* border: 1px solid green; */
   box-sizing: border-box;
@@ -8,7 +17,16 @@
 body {
   min-height: 100vh;
   margin: 0;
-  background-color: antiquewhite;
+  background-color: var(--light);
+}
+
+h1 {
+  color: var(--light);
+}
+
+.taskTitle {
+  font-size: 3rem;
+  color: var(--mediumPurple);
 }
 
 .header {
@@ -16,7 +34,11 @@ body {
   align-items: center;
   padding: 0 0 0 1rem;
   gap: 2rem;
+  height: 3rem;
+
+  background-color: var(--lightPurple);
 }
+
 .navBtn:hover {
   cursor: pointer;
 }
@@ -27,7 +49,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: white;
+  background-color: var(--light);
   height: 100%;
 
   position: fixed;
@@ -73,7 +95,7 @@ ul.dropDownItems {
 
 .navUl li:hover {
   cursor: pointer;
-  color: red;
+  color: var(--mediumPurple);
 }
 
 .addProject {
@@ -88,7 +110,7 @@ ul.dropDownItems {
   border: none;
   border-radius: 5px;
 
-  background-color: aliceblue;
+  background-color: var(--mediumPurple);
 }
 
 button:hover {
@@ -122,7 +144,12 @@ button:hover {
 
   border: none;
   border-radius: 5px;
-  background-color: aliceblue;
+  background-color: var(--mediumPurple);
+}
+
+.addProject,
+.taskBtn {
+  color: var(--white);
 }
 
 /* .nav {
@@ -169,6 +196,7 @@ button:hover {
 
 .modal {
   border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 /* project Modal */
 fieldset {
@@ -176,16 +204,15 @@ fieldset {
 }
 
 #getProject.modal {
-  height: 50vh;
   width: 80vw;
-  background-color: white;
+  background-color: var(--white);
 }
 
 .projectForm {
   display: flex;
   flex-direction: column;
 
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
   height: 100%;
 
@@ -193,11 +220,28 @@ fieldset {
 }
 
 legend {
-  font-size: 1.5rem;
-  padding-top: 2rem;
-  width: 100%;
+  font-size: 2rem;
 }
 
+.formTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+
+  color: var(--white);
+  background-color: var(--lightPurple);
+
+  border-radius: 5px 5px 0 0;
+}
+fieldset {
+  padding: 1rem;
+  border: 0;
+}
 label {
   font-size: 1.25rem;
 }
@@ -232,7 +276,7 @@ label {
 #editDate,
 #editPriority,
 #editProject {
-  background-color: aliceblue;
+  background-color: var(--gray);
   font-size: 1.5rem;
   padding-left: 1rem;
 }
@@ -240,8 +284,16 @@ label {
 .projectSubmit,
 .taskForm input,
 .editTask input {
-  font-size: 1.25rem;
+  font-size: 2rem;
   border: none;
+  background-color: var(--mediumPurple);
+
+  border-radius: 5px;
+}
+
+.projectSubmit,
+.submit {
+  color: var(--white);
 }
 
 .closeProject,
@@ -249,8 +301,10 @@ label {
 .editTask .close,
 .close,
 .detail .close {
-  height: 1.5rem;
+  font-size: 1.25rem;
+  /* height: 1.5rem; */
   border: none;
+  border-radius: 5px;
 }
 
 .projectSubmit:hover,
@@ -324,7 +378,7 @@ label {
   border: 1px solid;
   border-radius: 5px;
 
-  background-color: aliceblue;
+  background-color: var(--gray);
 }
 
 .complete,
@@ -348,14 +402,17 @@ label {
   justify-content: center;
   align-items: center;
 
-  margin: 0 1rem;
+  margin: 0 2rem;
   gap: 1rem;
   max-width: 5rem;
 }
 
+/* Details */
+
 .details {
   padding: 0.5rem;
-  border: 3px solid;
+  border: 3px solid var(--mediumPurple);
+  color: var(--mediumPurple);
   border-radius: 5px;
 }
 
@@ -380,7 +437,7 @@ label {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: var(--light);
   width: 80vw;
 
   max-width: 400px;
@@ -396,7 +453,6 @@ label {
 
 .newKey {
   display: flex;
-  /* font-size: 2rem; */
 
   justify-content: flex-start;
   align-items: center;
@@ -405,10 +461,15 @@ label {
 
   gap: 1rem;
   margin: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+
+  color: var(--white);
+  background-color: var(--mediumPurple);
 }
 
 .keyValue {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
@@ -421,17 +482,31 @@ label {
 }
 
 .detailInfo .close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   align-self: flex-end;
   margin: 1rem;
-  height: auto;
+  /* height: auto; */
+  height: 3rem;
+  width: 3rem;
   font-size: 1.5rem;
   border-radius: 5px;
+  padding: 1.25rem;
+  background-color: var(--lightPurple);
+  color: var(--white);
 }
 
 .removeProject {
   padding: 1rem;
   border-radius: 5px;
   border: none;
+}
+
+/* hover features */
+
+.taskContainer:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* .content {
