@@ -225,13 +225,19 @@ export const makeTaskContainer = (title, detail, day, n) => {
   const buttonBox = document.createElement("div");
   buttonBox.className = "buttonBox";
 
-  const edit = document.createElement("button");
+  const edit = document.createElement("img");
+  // const edit = document.createElementNS("http://www.w3.org/2000/svg");
   edit.className = "editBtn";
-  edit.textContent = "E";
+  edit.src = "assets/edit.svg";
+  edit.alt = "edit button";
+  //   edit.textContent = "E";
+  //   edit.style.backgroundImage = "..dist/assets/edit.svg";
   edit.dataset.number = n;
   edit.dataset.formTarget = "#edit";
 
-  const remove = document.createElement("button");
+  const remove = document.createElement("img");
+  remove.src = "assets/trash.svg";
+  remove.alt = "trash button";
   remove.className = "remove";
   remove.textContent = "X";
   remove.dataset.number = n;

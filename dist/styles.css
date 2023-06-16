@@ -381,6 +381,10 @@ label {
   background-color: var(--gray);
 }
 
+input[type="checkbox"] {
+  accent-color: var(--mediumPurple);
+}
+
 .complete,
 .details {
   /* margin: 0 1rem 0 0; */
@@ -410,18 +414,30 @@ label {
 /* Details */
 
 .details {
+  display: flex;
+  justify-self: center;
+  align-items: center;
   padding: 0.5rem;
   border: 3px solid var(--mediumPurple);
   color: var(--mediumPurple);
   border-radius: 5px;
+  height: 2rem;
 }
 
 .details:hover {
   cursor: pointer;
 }
+
 .buttonBox {
   display: flex;
-  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  /* border: 1px solid; */
+
+  height: 2.5rem;
+  width: 11rem;
 }
 
 #detailInfo {
@@ -433,11 +449,14 @@ label {
 
   z-index: 10;
 
+  /* background-image: url(assets/edit.svg); */
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--light);
+  max-height: 95vh;
   width: 80vw;
 
   max-width: 400px;
@@ -457,7 +476,7 @@ label {
   justify-content: flex-start;
   align-items: center;
 
-  width: 90%;
+  width: 100%;
 
   gap: 1rem;
   margin: 1rem;
@@ -503,10 +522,33 @@ label {
   border: none;
 }
 
+.editBtn,
+.remove {
+  width: 2rem;
+}
+
 /* hover features */
 
 .taskContainer:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.details:hover {
+  color: var(--lightPurple);
+  border-color: var(--lightPurple);
+}
+
+button.addProject:hover,
+.taskBtn:hover {
+  color: black;
+  background-color: var(--lightPurple);
+}
+
+.editBtn:hover,
+.remove:hover {
+  cursor: pointer;
+
+  width: 2.5rem;
 }
 
 /* .content {
