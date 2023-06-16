@@ -6,6 +6,7 @@ import {
   openModalBtns,
   openModals,
   displayDetails,
+  displayNav,
 } from "./dom-manipulation";
 
 initialLoad();

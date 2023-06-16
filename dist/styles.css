@@ -11,6 +11,8 @@
   /* border: 1px solid green; */
   box-sizing: border-box;
   margin: 0;
+
+  font-family: "Roboto", sans-serif;
   /* padding: 0; */
 }
 
@@ -406,9 +408,9 @@ input[type="checkbox"] {
   justify-content: center;
   align-items: center;
 
-  margin: 0 2rem;
+  margin: 0 1.5rem;
   gap: 1rem;
-  max-width: 5rem;
+  max-width: 6rem;
 }
 
 /* Details */
@@ -544,6 +546,11 @@ button.addProject:hover,
   background-color: var(--lightPurple);
 }
 
+.close:hover {
+  color: black;
+  background-color: var(--mediumPurple);
+}
+
 .editBtn:hover,
 .remove:hover {
   cursor: pointer;
@@ -551,36 +558,54 @@ button.addProject:hover,
   width: 2.5rem;
 }
 
-/* .content {
-  min-height: 100vh;
-  display: grid;
-  grid-template-areas:
-    "hd hd hd hd"
-    "nav mn mn mn"
-    "nav mn mn mn"
-    "nav mn mn mn"
-    "nav mn mn mn";
-  grid-template-columns: auto repeat(3, 1fr);
-  grid-template-rows: auto repeat(4, 1fr);
-}
+/* media query */
 
-.header {
-  grid-area: hd;
-  height: 100px;
-  background-color: aquamarine;
-}
+@media all and (min-width: 768px) {
+  body {
+    /* min-height: 100vh; */
+    display: grid;
+    grid-template-areas:
+      "hd hd "
+      "nav mn "
+      "nav mn "
+      "nav mn "
+      "nav mn ";
 
-.nav {
-  grid-area: nav;
-  background-color: red;
-  width: 300px;
-}
+    grid-template-rows: auto 1fr;
+  }
 
-.mainContent {
-  grid-area: mn;
-  background-color: grey;
-  min-width: 100%;
-} */
+  .header {
+    grid-area: hd;
+    height: 100px;
+  }
+
+  nav {
+    width: 250px;
+    display: none;
+    grid-area: nav;
+    position: relative;
+    display: flex;
+  }
+
+  .projects {
+    display: inline-block;
+  }
+
+  .addProject {
+    width: 7rem;
+    margin: 1rem 0 0;
+  }
+  .closeNav {
+    display: none;
+  }
+
+  .mainContent {
+    grid-area: mn;
+    grid-column: span 3;
+
+    width: 70vw;
+  }
+}
 
 .toDoChecked {
   text-decoration: line-through;

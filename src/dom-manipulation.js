@@ -47,6 +47,7 @@ const toggleHome = (() => {
   home.addEventListener("click", () => {
     homeTasks();
     closeNavFunc();
+    displayNav();
   });
 })();
 
@@ -253,13 +254,34 @@ export const makeTaskContainer = (title, detail, day, n) => {
 
 //media query toggles
 
+export const displayNav = () => {
+  const body = document.querySelector("body");
+  const navBar = document.querySelector("#navContainer");
+
+  body.append(navBar);
+
+  console.log(navBar.offsetWidth);
+
+  if (window.screen.availWidth >= 768) {
+    navBar.style.width = "250px";
+    navBar.style.display = "flex";
+  } else {
+    navBar.style.width = "100%";
+    closeNavFunc();
+  }
+};
+
 const navToggle = (() => {
   const navBtn = document.querySelector(".navBtn");
   const navBar = document.querySelector("#navContainer");
 
   navBtn.addEventListener("click", () => {
-    navBar.classList.toggle("nav");
-    navBar.style.width = "100%";
+    if (window.screen.availWidth <= 768) {
+      navBar.classList.toggle("nav");
+      navBar.style.width = "100%";
+    } else {
+      navBar.style.width = "250px";
+    }
   });
 })();
 

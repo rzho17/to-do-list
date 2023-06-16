@@ -20,6 +20,7 @@ import displayTasks, {
   closeProjectModal,
   closeModal,
   closeNavFunc,
+  displayNav,
   // changeProject,
 } from "./dom-manipulation";
 
@@ -132,7 +133,11 @@ export const changeProject = () => {
         showEmptyProject(projectIndex);
       }
 
-      closeNavFunc();
+      // closeNavFunc();
+
+      // const body = document.querySelector("body");
+      console.log(window.screen.availWidth >= 768);
+      displayNav();
     });
   });
 };
@@ -269,7 +274,8 @@ const toggleDays = (() => {
     mainContent.append(todayTitle);
 
     filterDays();
-    closeNavFunc();
+    // closeNavFunc();
+    displayNav();
   });
 })();
 
@@ -288,6 +294,7 @@ const toggleWeeks = (() => {
     mainContent.append(todayTitle);
 
     filterWeek();
-    closeNavFunc();
+    // closeNavFunc();
+    displayNav();
   });
 })();
