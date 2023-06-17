@@ -34,13 +34,6 @@ export const homeTasks = () => {
   mainContent.append(displayAllTasks(makeToDo.arr));
 };
 
-// export const toggleEdit = () => {
-//   const displayEdit = document.querySelector("#edit");
-//   displayEdit.classList.toggle("displayEdit");
-
-//   console.log("hi");
-// };
-
 const toggleHome = (() => {
   const home = document.querySelector(".home");
 
@@ -145,24 +138,16 @@ export const strikeThrough = (e) => {
   const strikeDate = parentDiv.querySelector(".date");
 
   strikeTitle.classList.toggle("toDoChecked");
-  //   strikeDetail.classList.toggle("toDoChecked");
-  //   strikeDate.classList.toggle("toDoChecked");
 };
 
 export const testStrike = (dataValue) => {
-  //   console.log(dataValue);
-
   const parentDiv = document.querySelector(
     '.taskContainer[data-number="' + dataValue + '"]'
   );
 
-  //   console.log(parentDiv);
-
   const checkBox = document.querySelector(
     'input[data-number="' + dataValue + '"]'
   );
-
-  //   console.log(checkBox);
 
   if (parentDiv === null || checkBox === null) {
     console.log("nothing");
@@ -174,8 +159,6 @@ export const testStrike = (dataValue) => {
     checkBox.checked = true;
 
     strikeTitle.classList.toggle("toDoChecked");
-    // strikeDetail.classList.toggle("toDoChecked");
-    // strikeDate.classList.toggle("toDoChecked");
   }
 };
 
@@ -186,16 +169,7 @@ export const removeStrike = (e) => {
   const strikeDate = parentDiv.querySelector(".date");
 
   strikeTitle.classList.remove("toDoChecked");
-
-  //   commented these out because I moved them into the same div and they aren't needed now
-  //   strikeDetail.classList.remove("toDoChecked");
-  //   strikeDate.classList.remove("toDoChecked");
 };
-
-// export const toggleEditForm = () => {
-//   const editForm = document.querySelector("#edit");
-//   editForm.classList.toggle("displayEdit");
-// };
 
 export const makeTaskContainer = (title, detail, day, n) => {
   const taskContainer = document.createElement("div");
@@ -227,12 +201,10 @@ export const makeTaskContainer = (title, detail, day, n) => {
   buttonBox.className = "buttonBox";
 
   const edit = document.createElement("img");
-  // const edit = document.createElementNS("http://www.w3.org/2000/svg");
+
   edit.className = "editBtn";
   edit.src = "assets/edit.svg";
   edit.alt = "edit button";
-  //   edit.textContent = "E";
-  //   edit.style.backgroundImage = "..dist/assets/edit.svg";
   edit.dataset.number = n;
   edit.dataset.formTarget = "#edit";
 
@@ -258,10 +230,6 @@ export const displayNav = () => {
   const body = document.querySelector("body");
   const navBar = document.querySelector("#navContainer");
 
-  //   body.append(navBar);
-
-  //   console.log(navBar.offsetWidth);
-
   if (window.screen.availWidth >= 768) {
     navBar.style.width = "250px";
     navBar.style.display = "flex";
@@ -275,8 +243,6 @@ export const displayNav = () => {
 
 export const navActive = () => {
   const li = document.querySelectorAll("li");
-
-  //   console.log("hey");
 
   li.forEach((item) => {
     item.classList.remove("targeted");
@@ -314,17 +280,13 @@ export const closeNavFunc = () => {
   const navBtn = document.querySelector(".closeNav");
   const navBar = document.querySelector("#navContainer");
 
-  //   navBtn.addEventListener("click", () => {
   navBar.classList.toggle("nav");
   navBar.style.width = "0";
-  //   });
 };
 
 const openModal = (modal) => {
-  //   const openProject = document.querySelector("#getProject");
-
   const overlay = document.querySelector("#overlay");
-  //   openProject.classList.add("active");
+
   if (modal === undefined) return;
   modal.classList.add("active");
   overlay.classList.add("active");
@@ -354,7 +316,7 @@ const openProject = document.querySelectorAll("[data-form-target]");
 openProject.forEach((button) => {
   button.addEventListener("click", () => {
     const modal = document.querySelector(button.dataset.formTarget);
-    // console.log(modal);
+
     openModal(modal);
   });
 });
@@ -387,7 +349,7 @@ const closeModalBtns = (() => {
   closeModalBtn.forEach((button) => {
     button.addEventListener("click", () => {
       const modal = button.closest(".modal");
-      //   console.log(modal);
+
       closeModal(modal);
     });
   });

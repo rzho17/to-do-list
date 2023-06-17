@@ -50,8 +50,7 @@ export const editToDo = (arr) => {
     edit.addEventListener("click", (e) => {
       let num = e.target.dataset.number;
       const specificObject = arr[num];
-      //   toggleEditForm(); turn this back on when nearing completetion
-      //   toggleEdit();
+
       openModals();
 
       editForm.addEventListener("submit", (e) => {
@@ -100,16 +99,12 @@ export const setCompletion = (arr) => {
     box.addEventListener("click", (e) => {
       const dataIndex = e.target.dataset.number;
 
-      console.log(dataIndex);
-      console.log(arr[dataIndex]);
       if (arr[dataIndex].complete === false) {
         arr[dataIndex].complete = true;
         strikeThrough(e);
-        console.log(arr[dataIndex].complete);
       } else {
         arr[dataIndex].complete = false;
         removeStrike(e);
-        console.log(arr[dataIndex].complete);
       }
       saveLocale(arr);
     });
@@ -192,16 +187,9 @@ const makeToDo = (() => {
     submitProject(project);
     form.reset();
 
-    // closeModals();
     closeModal(form);
-
-    // closeModal();
-    // changeProject(project);
-    // console.log(project);
   });
   return { arr };
 })();
-
-// localStorage.clear();
 
 export default makeToDo;

@@ -12,17 +12,10 @@ import displayTasks, {
   clearContent,
   removeProjects,
   homeTasks,
-  toggleEdit,
   initialProjectLoad,
-  initialLoad,
-  displayDetails,
-  closeModals,
-  closeProjectModal,
   closeModal,
-  closeNavFunc,
   displayNav,
   navActive,
-  // changeProject,
 } from "./dom-manipulation";
 
 import { saveProjects } from "./locale-storage";
@@ -69,9 +62,6 @@ export const filterDays = () => {
     const result = isSameDay(test, today);
 
     if (result) {
-      //need to be able to keep the data number on change to each respective item
-      //so when they are being edited or changed they will still reflect on the original array
-
       displayTasks(
         makeTaskContainer(day.title, day.description, day.dueDate, index)
       );
@@ -96,8 +86,6 @@ export const filterWeek = () => {
     });
 
     if (withinWeek) {
-      //need to be able to keep the data number on change to each respective item
-      //so when they are being edited or changed they will still reflect on the original array
       displayTasks(
         makeTaskContainer(day.title, day.description, day.dueDate, index)
       );
@@ -134,11 +122,6 @@ export const changeProject = () => {
         showEmptyProject(projectIndex);
       }
 
-      // closeNavFunc();
-
-      // const body = document.querySelector("body");
-      // console.log(window.screen.availWidth >= 768);
-
       displayNav();
       navActive();
     });
@@ -167,10 +150,10 @@ changeProject();
 
 const showEmptyProject = (num) => {
   const mainContent = document.querySelector(".mainContent");
-  // const heading = document.querySelector(".taskTitle");
+
   const heading = document.querySelector(".taskTitle");
   heading.className = "taskTitle";
-  // heading.style.marginTop = "12rem";
+
   const deleteProject = document.createElement("button");
   deleteProject.className = "removeProject";
 
@@ -239,9 +222,8 @@ export const createProject = (() => {
     console.log(projectArr);
 
     project.reset();
-    // closeModal(project);
+
     closeModal(project);
-    // closeModal();
   });
 
   return { projectArr };
@@ -251,7 +233,6 @@ const addToggle = (() => {
   const add = document.querySelector(".addProject");
   add.addEventListener("click", (e) => {
     e.stopPropagation();
-    // toggleProject();
   });
 })();
 
@@ -277,7 +258,7 @@ const toggleDays = (() => {
     mainContent.append(todayTitle);
 
     filterDays();
-    // closeNavFunc();
+
     displayNav();
   });
 })();
@@ -297,7 +278,7 @@ const toggleWeeks = (() => {
     mainContent.append(todayTitle);
 
     filterWeek();
-    // closeNavFunc();
+
     displayNav();
   });
 })();
