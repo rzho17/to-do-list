@@ -38,6 +38,9 @@ h1 {
   gap: 2rem;
   height: 3rem;
 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
   background-color: var(--lightPurple);
 }
 
@@ -162,10 +165,6 @@ button:hover {
   color: var(--white);
 }
 
-/* .nav {
-  display: none;
-} */
-
 #overlay {
   position: fixed;
   opacity: 0;
@@ -208,6 +207,7 @@ button:hover {
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
 /* project Modal */
 fieldset {
   border: none;
@@ -312,7 +312,6 @@ label {
 .close,
 .detail .close {
   font-size: 1.25rem;
-  /* height: 1.5rem; */
   border: none;
   border-radius: 5px;
 }
@@ -385,19 +384,16 @@ label {
 
   /* gap: 1rem; */
   padding: 1.5rem 2rem;
-  border: 1px solid;
+  /* border: 1px solid; */
   border-radius: 5px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
   background-color: var(--gray);
 }
 
 input[type="checkbox"] {
   accent-color: var(--mediumPurple);
-}
-
-.complete,
-.details {
-  /* margin: 0 1rem 0 0; */
 }
 
 .checkAndTitle {
@@ -409,8 +405,6 @@ input[type="checkbox"] {
 }
 
 .taskContainer .title {
-  /* margin-right: 2rem; */
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -444,8 +438,6 @@ input[type="checkbox"] {
   align-items: center;
   gap: 1rem;
 
-  /* border: 1px solid; */
-
   height: 2.5rem;
   width: 11rem;
 }
@@ -458,8 +450,6 @@ input[type="checkbox"] {
   transform: translate(-50%, -50%) scale(0);
 
   z-index: 10;
-
-  /* background-image: url(assets/edit.svg); */
 
   display: flex;
   flex-direction: column;
@@ -516,7 +506,7 @@ input[type="checkbox"] {
   align-items: center;
   align-self: flex-end;
   margin: 1rem;
-  /* height: auto; */
+
   height: 3rem;
   width: 3rem;
   font-size: 1.5rem;
@@ -540,7 +530,7 @@ input[type="checkbox"] {
 /* hover features */
 
 .taskContainer:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
 }
 
 .details:hover {
@@ -637,12 +627,4 @@ button.addProject:hover,
 
 .displayItems {
   display: none;
-}
-
-.displayEdit {
-  /* display: none; */
-}
-
-.addTask {
-  /* display: none; */
 }
