@@ -139,7 +139,7 @@ export const clearContent = () => {
 
 export const strikeThrough = (e) => {
   const parentDiv = e.target.parentElement.parentElement;
-  console.log(parentDiv);
+  //   console.log(parentDiv);
   const strikeTitle = parentDiv.querySelector(".title");
   const strikeDetail = parentDiv.querySelector(".details");
   const strikeDate = parentDiv.querySelector(".date");
@@ -150,19 +150,19 @@ export const strikeThrough = (e) => {
 };
 
 export const testStrike = (dataValue) => {
-  console.log(dataValue);
+  //   console.log(dataValue);
 
   const parentDiv = document.querySelector(
     '.taskContainer[data-number="' + dataValue + '"]'
   );
 
-  console.log(parentDiv);
+  //   console.log(parentDiv);
 
   const checkBox = document.querySelector(
     'input[data-number="' + dataValue + '"]'
   );
 
-  console.log(checkBox);
+  //   console.log(checkBox);
 
   if (parentDiv === null || checkBox === null) {
     console.log("nothing");
@@ -258,9 +258,9 @@ export const displayNav = () => {
   const body = document.querySelector("body");
   const navBar = document.querySelector("#navContainer");
 
-  body.append(navBar);
+  //   body.append(navBar);
 
-  console.log(navBar.offsetWidth);
+  //   console.log(navBar.offsetWidth);
 
   if (window.screen.availWidth >= 768) {
     navBar.style.width = "250px";
@@ -269,6 +269,21 @@ export const displayNav = () => {
     navBar.style.width = "100%";
     closeNavFunc();
   }
+
+  navActive();
+};
+
+export const navActive = () => {
+  const li = document.querySelectorAll("li");
+
+  //   console.log("hey");
+
+  li.forEach((item) => {
+    item.classList.remove("targeted");
+    item.addEventListener("click", (e) => {
+      e.target.classList.toggle("targeted");
+    });
+  });
 };
 
 const navToggle = (() => {
@@ -339,7 +354,7 @@ const openProject = document.querySelectorAll("[data-form-target]");
 openProject.forEach((button) => {
   button.addEventListener("click", () => {
     const modal = document.querySelector(button.dataset.formTarget);
-    console.log(modal);
+    // console.log(modal);
     openModal(modal);
   });
 });

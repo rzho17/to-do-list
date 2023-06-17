@@ -94,6 +94,14 @@ ul.dropDownItems {
 
   width: 50vw;
 }
+.navUl li:hover:nth-of-type(4) {
+  cursor: pointer;
+  font-size: 2.5rem;
+}
+
+.navUl li.targeted {
+  color: var(--mediumPurple);
+}
 
 .navUl li:hover {
   cursor: pointer;
@@ -592,8 +600,14 @@ button.addProject:hover,
   }
 
   .addProject {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 7rem;
     margin: 1rem 0 0;
+  }
+  .addProject::before {
+    content: "Add ";
   }
   .closeNav {
     display: none;
@@ -604,6 +618,16 @@ button.addProject:hover,
     grid-column: span 3;
 
     width: 70vw;
+  }
+
+  .taskContainer {
+  }
+
+  .checkAndTitle {
+    gap: 7rem;
+  }
+  #overlay {
+    z-index: 1;
   }
 }
 

@@ -7,6 +7,7 @@ import {
   openModals,
   displayDetails,
   displayNav,
+  navActive,
 } from "./dom-manipulation";
 
 initialLoad();

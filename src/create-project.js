@@ -21,6 +21,7 @@ import displayTasks, {
   closeModal,
   closeNavFunc,
   displayNav,
+  navActive,
   // changeProject,
 } from "./dom-manipulation";
 
@@ -136,8 +137,10 @@ export const changeProject = () => {
       // closeNavFunc();
 
       // const body = document.querySelector("body");
-      console.log(window.screen.availWidth >= 768);
+      // console.log(window.screen.availWidth >= 768);
+
       displayNav();
+      navActive();
     });
   });
 };
